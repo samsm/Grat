@@ -1,4 +1,4 @@
-class Content
+class Page
   include MongoMapper::Document
   
   key :url, String

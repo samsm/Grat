@@ -3,12 +3,13 @@
     %p 
       Let's make us a
       %strong= url
-      page!
+      ==#{focus}!
   - else
     %p
       Editing 
       %a{:href => url}
         %strong= url
+      == (a #{focus})
 %form{:action => "/admin/#{focus}#{url}", :method => 'post'}
   .url
     %label{:for => form_nest('url')} Url

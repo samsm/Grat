@@ -5,7 +5,7 @@ require 'sass'
 require 'mongomapper'
 MongoMapper.database = 'grat_development'
 
-require File.dirname(__FILE__) + '/grat/content'
+require File.dirname(__FILE__) + '/grat/page'
 
 
 module Grat
@@ -50,7 +50,7 @@ module Grat
       @content ||= model.find_by_url(url) || model.new(:url => url)
     end
     
-    def focus ; 'content' ; end
+    def focus ; params[:focus] ; end
     def model ; Grat.const_get focus.capitalize ; end
     
     def focus_params

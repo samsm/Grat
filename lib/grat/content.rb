@@ -13,7 +13,7 @@ class Content
   def tags=(val)
     super(val.kind_of?(Array) ? val : val.split(' '))
   end
-  
+    
   def uneditable_keys
     # url is in here so it can maually be placed at the top of edit form.
     ["updated_at", "_id", "url", "created_at"]

@@ -18,6 +18,6 @@
     %textarea{:name => form_nest('content')}= content.content
   .tags
     %label{:for => form_nest('tags')} Tags
-    %input{:name => form_nest('tags'), :value => content.tags}
+    %input{:name => form_nest('tags'), :value => content.tags.join(' ')}
   .submit
     %input{:name => form_nest('submit'), :type => 'submit', :value => "Let's save this thing"}

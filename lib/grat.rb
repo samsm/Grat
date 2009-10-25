@@ -47,10 +47,11 @@ module Grat
     end
     
     def content
-      @content ||= Content.find_by_url(url) || Content.new(:url => url)
+      @content ||= model.find_by_url(url) || model.new(:url => url)
     end
     
     def focus ; 'content' ; end
+    def model ; Grat.const_get focus.capitalize ; end
     
     def focus_params
       params[focus].reject {|k,v| k == 'submit'}

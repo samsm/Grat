@@ -16,7 +16,12 @@ module Grat
     
     get '/:name.css' do
       content_type 'text/css', :charset => 'utf-8'
-      sass "css/_#{params[:name]}".to_sym
+      if File.exist?(File.dirname(__FILE__) + "/../views/css/#{params[:name]}.css")
+        IO.read File.dirname(__FILE__) + "/../views/css/#{params[:name]}.css"
+      else
+        puts "Miss: css/_#{params[:name]}"
+        sass "css/_#{params[:name]}".to_sym
+      end
     end
     
     get '/admin/*' do

@@ -2,12 +2,13 @@
   - if content.new_record?
     %p 
       Let's make us a
-      %b= url
+      %strong= url
       page!
   - else
     %p
       Editing 
-      %b= url
+      %a{:href => url}
+        %strong= url
 %form{:action => "/admin#{url}", :method => 'post'}
   .url
     %label{:for => form_nest('url')} Url

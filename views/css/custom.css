@@ -1,0 +1,28 @@
+/* @override http://localhost:9393/custom.css */
+
+.grat_greet {
+  background-color: yellow;
+  border-bottom: solid 2px;
+}
+form {
+  margin-top: 1em;
+  padding: 1em;
+}
+
+form div {
+  margin-bottom: 1em;
+}
+
+input, textarea, label {
+  width: 100%;
+  font-size: 2em;
+}
+
+.submit input {
+  width: auto;
+}
+textarea {
+  font-family: "Courier New", Courier, mono;
+  font-weight: bold;
+  height: 15em;
+}

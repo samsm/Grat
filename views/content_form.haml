@@ -1,0 +1,22 @@
+.grat_greet
+  - if content.new_record?
+    %p 
+      Let's make us a
+      %b= url
+      page!
+  - else
+    %p
+      Editing 
+      %b= url
+%form{:action => "/admin#{url}", :method => 'post'}
+  .url
+    %label{:for => form_nest('url')} Url
+    %input{:name => form_nest('url'), :value => url}
+  .content
+    %label{:for => form_nest('content')} Content
+    %textarea{:name => form_nest('content')}= content.content
+  .tags
+    %label{:for => form_nest('tags')} Tags
+    %input{:name => form_nest('tags'), :value => content.tags}
+  .submit
+    %input{:name => form_nest('submit'), :type => 'submit', :value => "Let's save this thing"}

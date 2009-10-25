@@ -1,0 +1,16 @@
+!!! XML
+!!! 1.0 Transitional
+%html
+  %head
+    %title Grat
+    
+    = stylesheet_tag('libraries.css')
+    = stylesheet_tag('template.css')
+    - stylesheet_tag('template_debug.css')
+    = stylesheet_tag('grids.css')
+    = stylesheet_tag('content.css')
+    = stylesheet_tag('mod.css')
+    = stylesheet_tag('mod_skins.css')
+  %body
+    = yield
+    .debug= params.inspect

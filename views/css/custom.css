@@ -3,6 +3,7 @@
 .grat_greet {
   background-color: yellow;
   border-bottom: solid 2px;
+  font-size: 2em;
 }
 form {
   margin-top: 1em;

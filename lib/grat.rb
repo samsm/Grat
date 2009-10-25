@@ -24,17 +24,22 @@ module Grat
       end
     end
     
-    get '/admin/*' do
+    get '/admin/:focus/*' do
       haml :content_form
     end
     
-    post '/admin/*' do
+    post '/admin/:focus/*' do
       content.update_attributes(focus_params)
-      redirect "/admin#{content.url}"
+      redirect "/admin/#{focus}#{content.url}"
     end
     
     get '/*' do
-      haml(content.content) #or missing_page
+      pass if content.new_record?
+      haml(content.content)
+    end
+    
+    not_found do
+      missing_page
     end
     
     def url

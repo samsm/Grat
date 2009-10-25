@@ -9,7 +9,7 @@
       Editing 
       %a{:href => url}
         %strong= url
-%form{:action => "/admin#{url}", :method => 'post'}
+%form{:action => "/admin/#{focus}#{url}", :method => 'post'}
   .url
     %label{:for => form_nest('url')} Url
     %input{:name => form_nest('url'), :value => url}

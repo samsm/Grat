@@ -5,7 +5,7 @@ class Grat::Page
   key :url, String
   key :tags, Array
   key :content, String
-  key :layout, String
+  key :template, String
   
   validates_uniqueness_of :url
   timestamps!

@@ -9,7 +9,7 @@ module Grat ; end
 
 require File.dirname(__FILE__) + '/grat/content'
 require File.dirname(__FILE__) + '/grat/page'
-require File.dirname(__FILE__) + '/grat/layout'
+require File.dirname(__FILE__) + '/grat/template'
 
 
 module Grat
@@ -33,8 +33,8 @@ module Grat
     
     get '/*' do
       pass if content.new_record?
-      if content.layout
-        haml(content.content, :layout => Layout.find_by_url(content.layout).content)
+      if content.template
+        haml(content.content, :layout => Template.find_by_url(content.template).content)
       else
         haml content.content
       end
@@ -55,8 +55,8 @@ module Grat
     def model
       @model ||= 
       case url.split('/')[1]
-      when 'layouts'
-        Layout
+      when 'templates'
+        Template
       else
         Page
       end

@@ -5,7 +5,11 @@ require 'sass'
 require 'mongomapper'
 MongoMapper.database = 'grat_development'
 
+module Grat ; end
+
+require File.dirname(__FILE__) + '/grat/content'
 require File.dirname(__FILE__) + '/grat/page'
+require File.dirname(__FILE__) + '/grat/layout'
 
 
 module Grat
@@ -14,14 +18,8 @@ module Grat
       nil
     end
     
-    get '/:name.css' do
-      content_type 'text/css', :charset => 'utf-8'
-      if File.exist?(File.dirname(__FILE__) + "/../views/css/#{params[:name]}.css")
-        IO.read File.dirname(__FILE__) + "/../views/css/#{params[:name]}.css"
-      else
-        puts "Miss: css/_#{params[:name]}"
-        sass "css/_#{params[:name]}".to_sym
-      end
+    get '/css/:name.css' do
+      sass "css/_#{params[:name]}".to_sym
     end
     
     get '/admin/:focus/*' do
@@ -35,7 +33,11 @@ module Grat
     
     get '/*' do
       pass if content.new_record?
-      haml(content.content)
+      if content.layout
+        haml(content.content, :layout => Layout.find_by_url(content.layout).content)
+      else
+        haml content.content
+      end
     end
     
     not_found do
@@ -50,7 +52,10 @@ module Grat
       @content ||= model.find_by_url(url) || model.new(:url => url)
     end
     
-    def focus ; params[:focus] ; end
+    def focus
+      params[:focus] or 'page'
+    end
+    
     def model ; Grat.const_get focus.capitalize ; end
     
     def focus_params
@@ -68,7 +73,7 @@ module Grat
         "#{context}[#{name}]"
       end
       def stylesheet_tag(href)
-        "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\"  href=\"/#{href}\" />"
+        "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\"  href=\"http://grat.local/css/#{href}\" />"
       end
     end
     

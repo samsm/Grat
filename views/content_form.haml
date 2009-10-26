@@ -1,7 +1,7 @@
 .grat_greet
   - if content.new_record?
     %p 
-      Let's make us a
+      Let's make a
       %strong= url
       ==#{focus}!
   - else
@@ -13,12 +13,16 @@
 %form{:action => "/admin/#{focus}#{url}", :method => 'post'}
   .url
     %label{:for => form_nest('url')} Url
-    %input{:name => form_nest('url'), :value => url}
+    %input{:name => form_nest('url'), :value => content.url}
   .content
     %label{:for => form_nest('content')} Content
     %textarea{:name => form_nest('content')}= content.content
   .tags
     %label{:for => form_nest('tags')} Tags
     %input{:name => form_nest('tags'), :value => content.tags.join(' ')}
+  - content.editable_fields.each_pair do |k,v|
+    %div{:class => k}
+      %label{:for => form_nest(k)}= k.capitalize
+      %input{:name => form_nest(k), :value => v}
   .submit
     %input{:name => form_nest('submit'), :type => 'submit', :value => "Let's save this thing"}

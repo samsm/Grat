@@ -22,13 +22,13 @@ module Grat
       sass "css/_#{params[:name]}".to_sym
     end
     
-    get '/admin/:focus/*' do
+    get '/admin/*' do
       haml :content_form
     end
     
-    post '/admin/:focus/*' do
+    post '/admin/*' do
       content.update_attributes(focus_params)
-      redirect "/admin/#{focus}#{content.url}"
+      redirect "/admin/#{content.url}"
     end
     
     get '/*' do
@@ -51,12 +51,16 @@ module Grat
     def content
       @content ||= model.find_by_url(url) || model.new(:url => url)
     end
-    
-    def focus
-      params[:focus] or 'page'
+        
+    def model
+      @model ||= 
+      case url.split('/')[1]
+      when 'layouts'
+        Layout
+      else
+        Page
+      end
     end
-    
-    def model ; Grat.const_get focus.capitalize ; end
     
     def focus_params
       params[focus].reject {|k,v| k == 'submit'}
@@ -66,11 +70,9 @@ module Grat
       haml :missing
     end
     
-    
-    
     helpers do
-      def form_nest(name,context = focus)
-        "#{context}[#{name}]"
+      def form_nest(name)
+        "#{content.type.downcase}[#{name}]"
       end
       def stylesheet_tag(href)
         "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\"  href=\"http://grat.local/css/#{href}\" />"

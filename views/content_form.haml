@@ -3,14 +3,14 @@
     %p 
       Let's make a
       %strong= url
-      ==#{focus}!
+      ==#{content.type}!
   - else
     %p
       Editing 
       %a{:href => url}
         %strong= url
-      == (a #{focus})
-%form{:action => "/admin/#{focus}#{url}", :method => 'post'}
+      == (a #{content.type})
+%form{:action => "/admin/#{url}", :method => 'post'}
   .url
     %label{:for => form_nest('url')} Url
     %input{:name => form_nest('url'), :value => content.url}

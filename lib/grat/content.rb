@@ -11,4 +11,8 @@ module Grat::Content
   def tags=(val)
     super(val.kind_of?(Array) ? val : val.split(' '))
   end
+  
+  def type
+    self.class.to_s.sub(/.+::/, '')
+  end
 end

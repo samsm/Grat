@@ -15,7 +15,7 @@ require File.dirname(__FILE__) + '/grat/layout'
 module Grat
   class Application < Sinatra::Base
     get '/favicon.ico' do
-      nil
+      pass
     end
     
     get '/css/:name.css' do

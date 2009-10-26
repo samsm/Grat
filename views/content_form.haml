@@ -10,7 +10,7 @@
       %a{:href => url}
         %strong= url
       == (a #{content.type})
-%form{:action => "/admin/#{url}", :method => 'post'}
+%form{:action => "/admin#{url}", :method => 'post'}
   .url
     %label{:for => form_nest('url')} Url
     %input{:name => form_nest('url'), :value => content.url}

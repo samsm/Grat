@@ -15,4 +15,9 @@ module Grat::Content
   def type
     self.class.to_s.sub(/.+::/, '')
   end
+  
+  def template
+    @template ||= Grat::Template.find_by_url(template_url) if template_url
+  end
+  
 end

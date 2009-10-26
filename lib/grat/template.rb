@@ -10,6 +10,7 @@ class Grat::Template
   
   key :content, String
   key :tags, Array
+  key :template_url, String
   timestamps!
   
   def url=(val)

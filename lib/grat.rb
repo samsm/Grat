@@ -1,16 +1,4 @@
-require 'ruby-debug'
-require 'sinatra'
-require 'haml'
-require 'sass'
-require 'mongomapper'
-MongoMapper.database = 'grat_development'
-
-module Grat ; end
-
-require File.dirname(__FILE__) + '/grat/content'
-require File.dirname(__FILE__) + '/grat/page'
-require File.dirname(__FILE__) + '/grat/template'
-
+require File.dirname(__FILE__) + '/environment.rb'
 
 module Grat
   class Application < Sinatra::Base
@@ -28,16 +16,33 @@ module Grat
     
     post '/admin/*' do
       content.update_attributes(focus_params)
-      redirect "/admin/#{content.url}"
+      redirect "/admin#{content.url}"
     end
     
     get '/*' do
       pass if content.new_record?
-      if content.template
-        haml(content.content, :layout => Template.find_by_url(content.template).content)
-      else
-        haml content.content
+      # if content.template
+      #   haml(content.content, :layout => Template.find_by_url(content.template).content)
+      # else
+      #   haml content.content
+      # end
+      # debugger
+      template_chain.inject('') do |sum, template|
+        locals ||= {}
+        locals.merge!(template.attributes)
+        haml_template = Haml::Engine.new(template.content)
+        haml_template.render(haml_template, locals) { sum }
       end
+    end
+    
+    def template_chain
+      current = content
+      collection = [content]
+      while current.template
+        current = current.template
+        collection << current
+      end
+      collection
     end
     
     not_found do
@@ -63,7 +68,7 @@ module Grat
     end
     
     def focus_params
-      params[content.type].reject {|k,v| k == 'submit'}
+      params[content.type.downcase].reject {|k,v| k == 'submit'}
     end
     
     def missing_page

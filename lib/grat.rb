@@ -63,7 +63,7 @@ module Grat
     end
     
     def focus_params
-      params[focus].reject {|k,v| k == 'submit'}
+      params[content.type].reject {|k,v| k == 'submit'}
     end
     
     def missing_page

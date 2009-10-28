@@ -10,6 +10,12 @@ module Grat
       sass "css/_#{params[:name]}".to_sym
     end
     
+    get '/admin/__all' do
+      @pages = Page.all
+      @templates = Template.all
+      haml :list
+    end
+    
     get '/admin/*' do
       haml :content_form
     end

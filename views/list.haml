@@ -1,0 +1,18 @@
+.grat_greet
+  %p Great. Here's everything. Hope you're happy.
+%h1 Pages
+%ol
+  - @pages.each do |page|
+    %li
+      %a{:href => page.url}= page.url
+      (
+      %a{:href => "/admin#{page.url}"} edit
+      )
+%h2 Templates
+%ol
+  - @templates.each do |template|
+    %li
+      %a{:href => template.url}= template.url
+      (
+      %a{:href => "/admin#{template.url}"} edit
+      )

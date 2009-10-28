@@ -11,7 +11,10 @@ class Grat::Template
   key :content, String
   key :tags, Array
   key :template_url, String
+  key :variables_needed, Array
   timestamps!
+  
+  before_save :detect_variables_needed_by_content
   
   def url=(val)
     super(val =~ BEGINS_WITH_TEMPLATE ? val : '/templates/' + val.sub(/\A\//,''))
@@ -19,7 +22,7 @@ class Grat::Template
   
   def detect_variables_needed_by_content
     haml = Haml::Engine.new(content)
-    variables_needed = {}
+    demo_variables = {}
     # formats = [String,Array] # later
     render_fails = true
     counter = 0
@@ -27,14 +30,14 @@ class Grat::Template
       counter += 1 
       return false if counter > 200 # no infinite loop, thanks
       begin
-        content_with(variables_needed)
+        content_with(demo_variables)
         render_fails = false
       rescue
         var = $!.to_s.sub(/.+`/,'').sub(/'.+/,'')
-        variables_needed[var] = 'text'
+        demo_variables[var] = 'text'
       end
     end
-    variables_needed.keys
+    self.variables_needed = demo_variables.keys
   end
   
   def content_with(locals = {},y = '')

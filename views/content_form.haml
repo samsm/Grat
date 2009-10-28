@@ -10,6 +10,20 @@
       %a{:href => url}
         %strong= url
       == (a #{content.type})
+%form.add_field
+  %fieldset
+    %legend Add a field
+    .fieldname
+      %label{:for => 'fieldname'} Field Name:
+      %input{:name => 'fieldname'}
+    .fieldtype
+      %label{:for => 'fieldtype'} Field Type:
+      %select{:name => 'fieldtype'}
+        %option{:value => 'text'} Text
+        %option{:value => 'textarea'} TextArea
+    .submit
+      %input{:name => 'fieldsubmit', :type => 'submit', :value => "Add field!"}      
+    
 %form{:action => "/admin#{url}", :method => 'post'}
   .url
     %label{:for => form_nest('url')} Url

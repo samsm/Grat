@@ -11,6 +11,12 @@
         %strong= url
       == (a #{content.type})
 %form{:action => "/admin#{url}", :method => 'post'}
+  .template
+    %label{:for => form_nest('template_url')} Template
+    %select{:name => form_nest('template')}
+      %option None
+      - Grat::Template.all.each do |template|
+        %option{:value => template.url}= template.url
   .url
     %label{:for => form_nest('url')} Url
     %input{:name => form_nest('url'), :value => content.url}

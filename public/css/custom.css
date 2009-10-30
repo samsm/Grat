@@ -14,7 +14,7 @@ form div {
   margin-bottom: 1em;
 }
 
-input, textarea, label {
+input, textarea, label, .sameaslabel {
   width: 100%;
   font-size: 2em;
 }

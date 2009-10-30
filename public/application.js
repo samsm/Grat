@@ -5,13 +5,24 @@ $(document).ready(function(){
     $('#new_fields').prepend("<div class='new_field'><p class='myEditableText sameaslabel'>Write the title here</p><input name='page[new_field]' value='' /></div>");
     
     $('.myEditableText').click(function(){
-      editable = $(this)
+      editable = $(this);
       
       editable.attr('contentEditable',true);
       editable.addClass('editing'); // style for editing
       editable.focus(); // put cursor in element
       editable.text(''); // clear text
       
+      // On focus of input, change name= to correspond to p sibling
+      editable.parent().children().filter('input').focus(function() {
+        input = $(this);
+        key = input.parent().children().filter('p').text();
+        // need to sanitize key
+        new_name = 'page[' + key + ']';
+        console.log(new_name);
+        input.attr('name',new_name);
+      })
+      
+      // Move to input field on enter 
       editable.keypress(function(event){
 				// move to field input is cancelled if enter is pressed
 				if (event.which == 13) {

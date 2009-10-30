@@ -1,4 +1,7 @@
-/* @override http://localhost:9393/custom.css */
+/* @override 
+	http://localhost:9393/custom.css
+	http://grat.local/css/custom.css
+*/
 
 .grat_greet {
   background-color: yellow;
@@ -19,6 +22,10 @@ input, textarea, label, .sameaslabel {
   font-size: 2em;
 }
 
+.sameaslabel {
+  padding-left: 0; // no padding like p has
+}
+
 .submit input {
   width: auto;
 }
@@ -26,4 +33,9 @@ textarea {
   font-family: "Courier New", Courier, mono;
   font-weight: bold;
   height: 13em;
+}
+
+p.editing {
+  min-height: 1em;
+  background-color: yellow;
 }

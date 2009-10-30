@@ -2,17 +2,28 @@
 $(document).ready(function(){
   $('a[href=#new_field]').click(function(){
     
-    $('#new_fields').prepend("<div class='new_field'><p class='editableText sameaslabel'>Write the title here</p><input name='page[new_field]' value='' /></div>");
+    $('#new_fields').prepend("<div class='new_field'><p class='myEditableText sameaslabel'>Write the title here</p><input name='page[new_field]' value='' /></div>");
     
-    // $('#new_fields div:first').highlight();
-    // $('#new_fields div:first label')[0].textContent = 'hi'
-    // $('#new_fields div:first p').change(function() {
-    //   alert('hi');
-    // })
-    
-    $('.editableText').editableText({
-         // default value
-         newlinesEnabled: false
+    $('.myEditableText').click(function(){
+      editable = $(this)
+      
+      editable.attr('contentEditable',true);
+      editable.addClass('editing'); // style for editing
+      editable.focus(); // put cursor in element
+      editable.text(''); // clear text
+      
+      editable.keypress(function(event){
+				// move to field input is cancelled if enter is pressed
+				if (event.which == 13) {
+				  // forward to text input
+				  $(editable).parent().children().filter('input').focus();
+				  return false
+				} else {
+				  return event.which
+				}
+			});
+			
+      
     });
     
     //  bind an event listener that will be called when
@@ -20,17 +31,6 @@ $(document).ready(function(){
     $('.editableText').change(function(){
       var newValue = $(this).html();
       
-
-          // do something
-          // For example, you could place an AJAX call here:
-        //  $.ajax({
-        //    type: "POST",
-        //    url: "some.php",
-        //    data: "newfieldvalue=" + newValue,
-        //    success: function(msg){
-        //      alert( "Data Saved: " + msg );
-        //    }
-        // });
     });
     
     

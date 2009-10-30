@@ -17,7 +17,8 @@ $(document).ready(function(){
         input = $(this);
         key = input.parent().children().filter('p').text();
         // need to sanitize key
-        new_name = 'page[' + key + ']';
+        sanitized_key = key.replace(/[0-9 '-]/g,'_').toLowerCase().replace(/[^a-z]/,'').toLowerCase()
+        new_name = 'page[' + sanitized_key + ']';
         console.log(new_name);
         input.attr('name',new_name);
       })

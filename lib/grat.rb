@@ -27,12 +27,6 @@ module Grat
     
     get '/*' do
       pass if content.new_record?
-      # if content.template
-      #   haml(content.content, :layout => Template.find_by_url(content.template).content)
-      # else
-      #   haml content.content
-      # end
-      # debugger
       template_chain.inject('') do |sum, template|
         locals ||= {}
         locals.merge!(template.attributes)
@@ -74,7 +68,7 @@ module Grat
     end
     
     def focus_params
-      params[content.type.downcase].reject {|k,v| k == 'submit'}
+      params[:content].reject {|k,v| k == 'submit'}
     end
     
     def missing_page
@@ -83,7 +77,7 @@ module Grat
     
     helpers do
       def form_nest(name)
-        "#{content.type.downcase}[#{name}]"
+        "content[#{name}]"
       end
       def stylesheet_tag(href)
         "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\"  href=\"http://grat.local/css/#{href}\" />"

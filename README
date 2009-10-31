@@ -3,3 +3,19 @@ Grat is a minimal content management dealy.
 It runs on Rack and uses MongoDB for wicked flexibility.
 
 Woo.
+
+Use it like so:
+1. Install gem (may need to set up gemcutter)
+2. Fresh directory
+3. config.ru file containing:
+  require 'rubygems'
+  require 'rack'
+  require 'grat'
+
+  Grat.database_conf # uses defaults, database=grat_development
+  # to override:
+  # Grat.database_conf(:host => 'localhost', :database => 'grat_special')
+
+  use Rack::ShowExceptions # <- Up to you.
+  run Grat::Application
+4. rackup (or passenger, if you know how)

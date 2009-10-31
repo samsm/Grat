@@ -37,12 +37,20 @@ class Grat::Application < Sinatra::Base
     end
   end
   
+  get '/gratfiles/:filename' do
+    file_data = IO.read(Grat.root_path + '/public/gratfiles/' + params[:filename])
+    case params[:filename]
+    when /\.css\Z/
+      content_type('text/css')
+    when /\.js\Z/
+      content_type('text/javascript')
+    end
+    file_data
+  end
+  
   helpers do
     def form_nest(name)
       "content[#{name}]"
-    end
-    def stylesheet_tag(href)
-      "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\"  href=\"http://grat.local/css/#{href}\" />"
     end
   end
   

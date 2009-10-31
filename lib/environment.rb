@@ -7,6 +7,14 @@ MongoMapper.database = 'grat_development'
 
 module Grat
   
+  def self.root_path
+    File.dirname(File.dirname(__FILE__))
+  end
+  
+  def self.lib_path
+    root_path + '/lib'
+  end
+  
   def self.database_conf(options = {})
     if options[:hostname]
       MongoMapper.connection = XGen::Mongo::Driver::Mongo.new(options[:hostname])
@@ -17,7 +25,7 @@ module Grat
   end
 end
 
-require File.dirname(__FILE__) + '/grat/content'
-require File.dirname(__FILE__) + '/grat/page'
-require File.dirname(__FILE__) + '/grat/template'
-require File.dirname(__FILE__) + '/grat/system'
+require Grat.lib_path + '/grat/content'
+require Grat.lib_path + '/grat/page'
+require Grat.lib_path + '/grat/template'
+require Grat.lib_path + '/grat/system'

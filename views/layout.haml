@@ -3,21 +3,14 @@
 %html
   %head
     %title Grat
-    %link{:rel=>"shortcut icon", :href=>"http://grat.local/favicon.ico"}
+    %link{:rel=>"shortcut icon", :href=>"/gratfiles/favicon.ico"}
     
-    %script{:type=>"text/javascript", :src=>"http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"}
-    %script{:type=>"text/javascript", :src=>"http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"}
+    %script{:type=>"text/javascript", :src=>"/gratfiles/jquery-combined.min.js"}
+    %script{:type=>"text/javascript", :src=>"/gratfiles/application.js"}
     
-    %script{:type=>"text/javascript", :src=>"http://grat.local/application.js"}
-    
-    = stylesheet_tag('libraries.css')
-    = stylesheet_tag('template.css')
-    - stylesheet_tag('template_debug.css')
-    = stylesheet_tag('grids.css')
-    = stylesheet_tag('content.css')
-    = stylesheet_tag('mod.css')
-    = stylesheet_tag('mod_skins.css')
-    = stylesheet_tag('custom.css')
+    %link{:rel => 'stylesheet', :type => 'text/css', :media => 'all', :href => '/gratfiles/oocss.min.css'}
+    %link{:rel => 'stylesheet', :type => 'text/css', :media => 'all', :href => '/gratfiles/custom.css'}
+
   %body
     = yield
     /

@@ -3,15 +3,7 @@ require File.dirname(__FILE__) + '/environment.rb'
 class Grat::Application < Sinatra::Base
   
   include Grat::System
-  
-  get '/favicon.ico' do
-    pass
-  end
-  
-  get '/css/:name.css' do
-    sass "css/_#{params[:name]}".to_sym
-  end
-  
+    
   get '/admin/__all' do
     @pages = Page.all
     @templates = Template.all

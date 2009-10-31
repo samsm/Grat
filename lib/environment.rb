@@ -10,3 +10,4 @@ module Grat ; end
 require File.dirname(__FILE__) + '/grat/content'
 require File.dirname(__FILE__) + '/grat/page'
 require File.dirname(__FILE__) + '/grat/template'
+require File.dirname(__FILE__) + '/grat/system'

@@ -1,9 +1,4 @@
-require 'ruby-debug'
 require 'sinatra'
-require 'haml'
-require 'sass'
-require 'mongomapper'
-MongoMapper.database = 'grat_development'
 
 module Grat
   
@@ -15,17 +10,27 @@ module Grat
     root_path + '/lib'
   end
   
+  def self.view_path
+    root_path + '/views'
+  end
+  
   def self.database_conf(options = {})
-    if options[:hostname]
-      MongoMapper.connection = XGen::Mongo::Driver::Mongo.new(options[:hostname])
+    @@database_conf = options    
+  end
+  
+  def self.database_load
+    require 'mongomapper'
+    if @@database_conf[:hostname]
+      MongoMapper.connection = XGen::Mongo::Driver::Mongo.new(@@database_conf[:hostname])
     end
     
-    MongoMapper.database = options[:database] || 'grat_development'
+    MongoMapper.database = @@database_conf[:database] || 'grat_development'
+    
+    require Grat.lib_path + '/grat/content'
+    require Grat.lib_path + '/grat/page'
+    require Grat.lib_path + '/grat/template'
     
   end
 end
 
-require Grat.lib_path + '/grat/content'
-require Grat.lib_path + '/grat/page'
-require Grat.lib_path + '/grat/template'
 require Grat.lib_path + '/grat/system'

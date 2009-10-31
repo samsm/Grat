@@ -22,7 +22,13 @@ module Grat::System
   end
       
   def model
-    @model ||= 
+    return @model if @model
+    
+    # Sinatra reloads are slow when mongomapper has to re-require
+    # This avoids requiring mongomapper when it isn't needed
+    Grat.database_load
+    
+    @model = 
     case url.split('/')[1]
     when 'templates'
       Grat::Template

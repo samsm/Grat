@@ -8,5 +8,4 @@ Grat.database_conf # uses defaults
 # Grat.database_conf(:host => 'localhost', :database => 'grat_delete')
 
 use Rack::ShowExceptions
-
 run Grat::Application

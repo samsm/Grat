@@ -1,6 +1,20 @@
 require 'haml'
 module Grat::Content
   
+  def self.included(base)
+    base.key :url, String
+    base.validates_uniqueness_of :url
+    base.key :content, String
+    base.key :tags, Array
+    base.key :template_url, String
+    base.key :variables_needed, Array
+    base.timestamps!
+    
+    base.before_save :detect_variables_needed_by_content
+    base.key :default_content_vars, String
+  end
+  
+  
   def editable_fields
     attributes.reject {|k,v| uneditable_keys.include? k }
   end

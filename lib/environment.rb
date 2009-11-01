@@ -1,7 +1,7 @@
 require 'sinatra'
 
 module Grat
-  
+  @@database_conf = {}
   def self.root_path
     File.dirname(File.dirname(__FILE__))
   end

@@ -20,4 +20,34 @@ module Grat::Content
     @template ||= Grat::Template.find_by_url(template_url) if template_url
   end
   
+  def template_url=(var)
+    super(var) unless var.empty?
+  end
+  
+  def detect_variables_needed_by_content
+    haml = Haml::Engine.new(content)
+    demo_variables = {}
+    # formats = [String,Array] # later
+    render_fails = true
+    counter = 0
+    while render_fails
+      counter += 1 
+      return false if counter > 200 # no infinite loop, thanks
+      begin
+        content_with(demo_variables)
+        render_fails = false
+      rescue
+        var = $!.to_s.sub(/.+`/,'').sub(/'.+/,'')
+        demo_variables[var] = 'text'
+      end
+    end
+    self.variables_needed = demo_variables.keys
+  end
+  
+  def content_with(locals = {},y = '')
+    haml = Haml::Engine.new(content)
+    haml.render(haml,locals) { y }
+  end
+  
+  
 end

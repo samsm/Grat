@@ -15,7 +15,7 @@ class Grat::Template
   timestamps!
   
   # Turn this off for a second
-  # before_save :detect_variables_needed_by_content
+  before_save :detect_variables_needed_by_content
   
   def url=(val)
     super(val =~ BEGINS_WITH_TEMPLATE ? val : '/templates/' + val.sub(/\A\//,''))

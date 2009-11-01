@@ -1,3 +1,4 @@
+require 'haml'
 module Grat::Content
   
   def editable_fields

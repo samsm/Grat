@@ -39,3 +39,6 @@
     
   .submit
     %input{:name => form_nest('submit'), :type => 'submit', :value => "Let's save this thing"}
+  .defaults
+    %label{:for => form_nest('default_content_vars')} Default Content Values
+    %textarea{:name => form_nest('default_content_vars')}= content.default_content_vars

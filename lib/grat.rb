@@ -35,12 +35,12 @@ class Grat::Application < Sinatra::Base
   
   get '/*' do
     pass if content.new_record?
+    locals = {}
     template_chain.inject('') do |sum, template|
-      locals ||= {}
       locals.merge!(template.attributes)
       require 'haml'
       haml_template = Haml::Engine.new(template.content)
-      haml_template.render(haml_template, locals) { sum }
+      result = haml_template.render(haml_template, locals) { sum }
     end
   end
   

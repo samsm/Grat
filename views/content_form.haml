@@ -18,7 +18,7 @@
       %option{:value=>''} None
       - Grat::Template.all.each do |template|
         - option_hash = {:value => template.url}
-        - option_hash.merge!(:selected => 'selected') if template.url == content.template
+        - option_hash.merge!(:selected => 'selected') if template.url == content.template_url
         %option{option_hash}= template.url
   .url
     %label{:for => form_nest('url')} Url

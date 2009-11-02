@@ -1,9 +1,11 @@
 // once page is loaded ...
 $(document).ready(function(){
+  // New field button + features
   $('a[href=#new_field]').click(function(){
     
     $('#new_fields').prepend("<div class='new_field'><p class='myEditableText sameaslabel'>Write the title here</p><input name='page[new_field]' value='' /></div>");
     
+    // upon click make label editable and other junk associated with customizing the new field
     $('.myEditableText').click(function(){
       editable = $(this);
       
@@ -56,11 +58,16 @@ $(document).ready(function(){
     //  user saves changed content
     $('.editableText').change(function(){
       var newValue = $(this).html();
-      
     });
     
     
     
     return false;
   })
+  
+  // Beautify default data textarea
+  $('#default_content_vars').each(function() {
+    this.innerHTML = js_beautify(this.innerHTML, {'indent_size':2});
+  })
+  
 });

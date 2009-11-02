@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'ruby-debug'
 
 module Grat
   @@database_conf = {}
@@ -20,9 +21,9 @@ module Grat
   
   def self.database_load
     require lib_path + '/grat/mongomapper_patches'
-    connection = if @@database_conf[:hostname]
+    connection = if @@database_conf[:host]
       # auth = db.authenticate(my_user_name, my_password)
-      Mongo::Connection.new(@@database_conf[:hostname])
+      Mongo::Connection.new(@@database_conf[:host])
     else
       Mongo::Connection.new
     end

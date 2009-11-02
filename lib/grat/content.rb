@@ -29,6 +29,10 @@ class Grat::Content
     super(val.kind_of?(Array) ? val : val.split(' '))
   end
   
+  def self.find_all_by_tag(tag_name)
+    all(:conditions => {'tags' => [tag_name]})
+  end
+  
   def type
     self.class.to_s.sub(/.+::/, '')
   end
@@ -38,7 +42,7 @@ class Grat::Content
   end
   
   def template
-    @template ||= Grat::Template.find_by_url(template_url) if template_url
+    @template ||= Grat::Content.find_by_url(template_url) if template_url
   end
   
   def template=(var)
@@ -66,26 +70,7 @@ class Grat::Content
       raise 'Unimplemented!'
     end
   end
-  
-  # def detect_variables_needed_by_content
-  #   demo_variables = {}
-  #   # formats = [String,Array] # later
-  #   render_fails = true
-  #   counter = 0
-  #   while render_fails
-  #     counter += 1 
-  #     return false if counter > 200 # no infinite loop, thanks
-  #     begin
-  #       content_with(demo_variables)
-  #       render_fails = false
-  #     rescue
-  #       var = $!.to_s.sub(/.+`/,'').sub(/'.+/,'')
-  #       demo_variables[var] = 'text'
-  #     end
-  #   end
-  #   self.variables_needed = demo_variables.keys
-  # end
-  
+    
   def detect_default_content_vars
     counter = 0
     while problem_var = detect_problem_var

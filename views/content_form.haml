@@ -1,15 +1,15 @@
 .grat_greet
   - if content.new_record?
     %p 
-      Let's make a
+      Let's make some
       %strong= url
-      ==#{content.type}!
+      content!
   - else
     %p
       Editing 
       %a{:href => url}
         %strong= url
-      == (a #{content.type})
+      content.
     
 %form{:action => "/admin#{url}", :method => 'post'}
   .template

@@ -3,7 +3,7 @@ require 'rubygems'
 require 'rake'
 require 'echoe'
 
-Echoe.new('grat', '0.0.3') do |p|
+Echoe.new('grat', '0.0.3.1') do |p|
   p.description    = "Minimal CMS for Rack and MongoDB."
   p.url            = "http://samsm.com/"
   p.author         = "Sam Schenkman-Moore"

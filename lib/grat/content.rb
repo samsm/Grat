@@ -1,19 +1,18 @@
-module Grat::Content
+class Grat::Content
+  include MongoMapper::Document
   
-  def self.included(base)
-    base.key :url, String
-    base.validates_uniqueness_of :url
-    base.key :content, String
-    base.key :tags, Array
-    base.key :template_url, String
-    base.key :variables_needed, Array
-    base.timestamps!
-    
-    base.before_save :detect_default_content_vars
-    base.key :default_content_vars, Hash
-    
-    base.key :render_engine_name, String
-  end
+  key :url, String
+  validates_uniqueness_of :url
+  key :content, String
+  key :tags, Array
+  key :template_url, String
+  key :variables_needed, Array
+  timestamps!
+  
+  before_save :detect_default_content_vars
+  key :default_content_vars, Hash
+  
+  key :render_engine_name, String
   
   def editable_fields
     attributes.reject {|k,v| uneditable_keys.include? k }

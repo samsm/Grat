@@ -28,13 +28,7 @@ module Grat::System
     # This avoids requiring mongomapper when it isn't needed
     Grat.database_load
     
-    @model = 
-    case url.split('/')[1]
-    when 'templates'
-      Grat::Template
-    else
-      Grat::Page
-    end
+    @model = Grat::Content
   end
   
   def focus_params

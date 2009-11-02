@@ -19,8 +19,8 @@ class Grat::Application < Sinatra::Base
   end
   
   get '/admin/__all' do
-    @pages = Page.all
-    @templates = Template.all
+    @pages = model.all
+    @templates = templates
     haml :list
   end
   
@@ -47,6 +47,10 @@ class Grat::Application < Sinatra::Base
   def haml(*args)
     require 'haml'
     super(*args)
+  end
+  
+  def templates
+    model.find_all_by_tag('template')
   end
     
   helpers do

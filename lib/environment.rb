@@ -36,8 +36,6 @@ module Grat
     MongoMapper.direct_database = database
     
     require Grat.lib_path + '/grat/content'
-    require Grat.lib_path + '/grat/page'
-    require Grat.lib_path + '/grat/template'
     
   end
 end

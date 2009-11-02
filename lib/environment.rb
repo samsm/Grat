@@ -1,5 +1,4 @@
 require 'sinatra'
-require 'ruby-debug'
 
 module Grat
   @@database_conf = {}

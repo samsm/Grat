@@ -9,7 +9,7 @@ Echoe.new('grat', '0.0.3') do |p|
   p.author         = "Sam Schenkman-Moore"
   p.email          = "samsm@samsm.com"
   p.ignore_pattern = ["tmp/*", "script/*"]
-  p.development_dependencies = ['sinarta','haml','sass','mongomapper']
+  p.development_dependencies = ['sinatra','haml','sass','mongomapper']
 end
 
 Dir["#{File.dirname(__FILE__)}/tasks/*.rake"].sort.each { |ext| load ext }

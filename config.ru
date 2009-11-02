@@ -5,7 +5,7 @@ require 'lib/grat'
 
 Grat.database_conf # uses defaults
 # to override:
-# Grat.database_conf(:host => 'localhost', :database => 'grat_delete')
+# Grat.database_conf(:host => 'db.mongohq.com', :database => 'grat_production', :username => 'you', :password => 'whatever')
 
 use Rack::ShowExceptions
 run Grat::Application

@@ -3,7 +3,7 @@ $(document).ready(function(){
   // New field button + features
   $('a[href=#new_field]').click(function(){
     
-    $('#new_fields').prepend("<div class='new_field'><p class='myEditableText sameaslabel'>Write the title here</p><input name='page[new_field]' value='' /></div>");
+    $('#new_fields').prepend("<div class='new_field'><p class='myEditableText sameaslabel'>Write the title here</p><input name='content[new_field]' value='' /></div>");
     
     // upon click make label editable and other junk associated with customizing the new field
     $('.myEditableText').click(function(){
@@ -25,7 +25,7 @@ $(document).ready(function(){
         key = input.parent().children().filter('p').text();
         // need to sanitize key
         sanitized_key = key.replace(/[^a-zA-Z]/g,'_').toLowerCase().replace(/[^a-z]/,'').toLowerCase()
-        new_name = 'page[' + sanitized_key + ']';
+        new_name = 'content[' + sanitized_key + ']';
         
         input.attr('name',new_name);
       })

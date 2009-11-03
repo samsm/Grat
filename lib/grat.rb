@@ -47,28 +47,9 @@ class Grat::Application < Sinatra::Base
   end
   
   def combine_docs(text,template,vars)
-    send "#{detect_template_type(template)}_render", text, template, vars
+    template.content_with(vars,text)
   end
-  
-  def haml_render(text, template, vars)
-    require 'haml'
-    haml_template = Haml::Engine.new(template.content)
-    haml_template.render(haml_template, vars) { text }
-  end
-  
-  def erb_render(text, template, vars)
-    require 'erb'
-    ERB.new(template.content,0).result(Grat::HashBinding.new(vars).get_binding { text })
-  end
-  
-  def detect_template_type(template)
-    if template.content.match(/\A[!%#.=-]/)
-      'haml'
-    else
-      'erb'
-    end
-  end
-  
+      
   def haml(*args)
     require 'haml'
     super(*args)

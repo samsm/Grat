@@ -10,9 +10,7 @@ class Grat::Content
   
   before_save :detect_default_content_vars
   key :default_content_vars, Hash
-  
-  key :render_engine_name, String
-  
+    
   def editable_fields
     attributes.reject {|k,v| uneditable_keys.include? k }
   end
@@ -61,13 +59,20 @@ class Grat::Content
   end
   
   def render_engine
-    @render_engine ||= case render_engine_name
-    when 'haml',nil # the default for now
-      require 'haml'
-      Haml::Engine.new(content)
-    when 'erb'
-      raise 'Unimplemented!'
+    if content.match(/\A[!%#.=-]/)
+      :haml
+    else
+      :erb
     end
+    # 
+    # 
+    # @render_engine ||= case render_engine_name
+    # when 'haml',nil # the default for now
+    #   require 'haml'
+    #   Haml::Engine.new(content)
+    # when 'erb'
+    #   raise 'Unimplemented!'
+    # end
   end
     
   def detect_default_content_vars
@@ -83,6 +88,17 @@ class Grat::Content
     end
   end
   
+  def haml_render(text, template, vars)
+    require 'haml'
+    haml_template = Haml::Engine.new(template)
+    haml_template.render(haml_template, vars) { text }
+  end
+  
+  def erb_render(text, template, vars)
+    require 'erb'
+    ERB.new(template,0).result(Grat::HashBinding.new(vars).get_binding { text })
+  end
+  
   def detect_problem_var(resolution = {})
     begin
       rendered = content_with(default_content_vars.merge(resolution), problem_var = nil)
@@ -93,7 +109,7 @@ class Grat::Content
   end
   
   def content_with(locals = {},y = '')
-    render_engine.render(render_engine,locals) { y }
+    send "#{render_engine}_render", y, content, locals
   end
   
   

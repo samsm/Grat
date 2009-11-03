@@ -41,3 +41,4 @@ module Grat
 end
 
 require Grat.lib_path + '/grat/system'
+require Grat.lib_path + '/grat/hash_binding'

@@ -6,7 +6,6 @@ class Grat::Content
   key :content, String
   key :tags, Array
   key :template_url, String
-  key :variables_needed, Array
   timestamps!
   
   before_save :detect_default_content_vars

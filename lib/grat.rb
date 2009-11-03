@@ -38,9 +38,34 @@ class Grat::Application < Sinatra::Base
     locals = {}
     template_chain.inject('') do |sum, template|
       locals.merge!(template.default_content_vars.merge(template.attributes))
-      require 'haml'
-      haml_template = Haml::Engine.new(template.content)
-      result = haml_template.render(haml_template, locals) { sum }
+      
+      combine_docs(sum,template, locals)
+      # require 'haml'
+      # haml_template = Haml::Engine.new(template.content)
+      # result = haml_template.render(haml_template, locals) { sum }
+    end
+  end
+  
+  def combine_docs(text,template,vars)
+    send "#{detect_template_type(template)}_render", text, template, vars
+  end
+  
+  def haml_render(text, template, vars)
+    require 'haml'
+    haml_template = Haml::Engine.new(template.content)
+    haml_template.render(haml_template, vars) { text }
+  end
+  
+  def erb_render(text, template, vars)
+    require 'erb'
+    ERB.new(template.content,0).result(Grat::HashBinding.new(vars).get_binding { text })
+  end
+  
+  def detect_template_type(template)
+    if template.content.match(/\A[!%#.=-]/)
+      'haml'
+    else
+      'erb'
     end
   end
   

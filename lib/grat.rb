@@ -37,12 +37,10 @@ class Grat::Application < Sinatra::Base
     pass if content.new_record?
     locals = {}
     template_chain.inject('') do |sum, template|
-      locals.merge!(template.default_content_vars.merge(template.attributes))
-      
+      locals = template.default_content_vars.
+                 merge(template.attributes_for_variables).
+                 merge(locals)
       combine_docs(sum,template, locals)
-      # require 'haml'
-      # haml_template = Haml::Engine.new(template.content)
-      # result = haml_template.render(haml_template, locals) { sum }
     end
   end
   

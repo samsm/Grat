@@ -10,7 +10,11 @@ class Grat::Content
   
   before_save :detect_default_content_vars
   key :default_content_vars, Hash
-    
+  
+  def attributes_for_variables
+    attributes.reject {|k,v| k == '_id' }
+  end
+  
   def editable_fields
     attributes.reject {|k,v| uneditable_keys.include? k }
   end
@@ -64,15 +68,6 @@ class Grat::Content
     else
       :erb
     end
-    # 
-    # 
-    # @render_engine ||= case render_engine_name
-    # when 'haml',nil # the default for now
-    #   require 'haml'
-    #   Haml::Engine.new(content)
-    # when 'erb'
-    #   raise 'Unimplemented!'
-    # end
   end
     
   def detect_default_content_vars

@@ -47,7 +47,6 @@ class Grat::Application < Sinatra::Base
     if json_to_import.is_a? Array
       model.delete_all if strategy == 'demolish'
       json_to_import.each do |record|
-        puts "Handling #{record['url']}"
         case strategy
         when 'add'
           import_record record
@@ -63,11 +62,9 @@ class Grat::Application < Sinatra::Base
   def import_record(hash, options = {:replace => false, :check => true})
     record = model.find_by_url(hash['url']) if options[:check]
     if record && options[:replace]
-      puts "Deleting #{hash['url']}"
       record.destroy if record
     end
     unless record && !options[:replace]
-      puts "Creating #{hash['url']}"
       model.create hash
     end
   end

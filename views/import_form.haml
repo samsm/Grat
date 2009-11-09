@@ -1,25 +1,24 @@
 .grat_greet
   %p Hey, import some json if you like.
-%form{:action => "/admin__import", :method => 'post', :enctype=>'multipart/form-data' }
+%form{:action => "/admin/__import", :method => 'post', :enctype=>'multipart/form-data' }
   .import_file
     %label{:for => 'import_file'} Upload a json file:
-    %input{:id => 'import_file',:type => 'file', :name => 'import[:file]'}
+    %input{:id => 'import_file', :type => 'file', :name => 'import[file]'}
   %p
     %em or
   .import_text
     %label{:for => 'import_text'} Paste some json here:
-    %textarea{:id => 'import_text', :name => 'import[:text]'}
+    %textarea{:id => 'import_text', :name => 'import[text]'}
   .import_replace_or_add
-    / <label for="r1"><input type="radio" name="group1" id="r1" value="1" /> button one</label>
     .add
       %label{:for => 'import_add'} Add new records to database, ignore existing records.
-      %input{:type=> 'radio', :id => 'import_add', :value => 'add', :name => 'import[setting]', :checked => 'checked'}
+      %input{:type=> 'radio', :id => 'import_add', :value => 'add', :name => 'import[strategy]', :checked => 'checked'}
     .replace
       %label{:for => 'import_replace'} Add new and replace matching records. (danger!)
-      %input{:type=> 'radio', :id => 'import_replace', :value => 'replace', :name => 'import[setting]'}
+      %input{:type=> 'radio', :id => 'import_replace', :value => 'replace', :name => 'import[strategy]'}
     .demolish
       %label{:for => 'import_demolish'} Demolish all existing records, then import. (omg danger!)
-      %input{:type=> 'radio', :id => 'import_demolish', :value => 'demolish', :name => 'import[setting]'}
+      %input{:type=> 'radio', :id => 'import_demolish', :value => 'demolish', :name => 'import[strategy]'}
   .submit
     %input{:name => 'import[submit]', :type => 'submit', :value => "Let's save this thing"}
     

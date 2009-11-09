@@ -24,3 +24,4 @@ Use it like so:
 6. http://localhost:9292/admin/mypage edits a page that will be available at http://localhost:9292/mypage
 7. http://localhost:9292/admin/__all for a list of all pages
 8. http://localhost:9292/admin/__export to get a json dump of all pages
+9. http://localhost:9292/admin/__import to import one of those dumps

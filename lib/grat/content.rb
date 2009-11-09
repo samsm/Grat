@@ -51,7 +51,7 @@ class Grat::Content
   end
   
   def template_url=(var)
-    super(var) unless var.empty?
+    super(var) unless var.nil? || var.empty?
   end
   
   def demo_string
@@ -75,9 +75,9 @@ class Grat::Content
     while problem_var = detect_problem_var
       counter += 1
       return false if counter > 200
-      (detect_problem_var(problem_var => demo_string) || 
+      (detect_problem_var(problem_var => demo_string) ||
         default_content_vars.merge!(problem_var => demo_string)) or
-      (detect_problem_var(problem_var => demo_array) || 
+      (detect_problem_var(problem_var => demo_array) ||
         default_content_vars.merge!(problem_var => demo_string)) or
       raise "Don't know how to reconcile."
     end

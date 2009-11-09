@@ -35,6 +35,49 @@ class Grat::Application < Sinatra::Base
     haml :import_form
   end
   
+  post '/admin/__import' do
+    json_text = file_import_text || params[:import][:text]
+    @import_results = import(json_text, params[:import][:strategy])
+    redirect '/admin/__all'
+  end
+  
+  # Rather inefficient at present.
+  def import(json_text, strategy)
+    json_to_import = JSON.parse json_text
+    if json_to_import.is_a? Array
+      model.delete_all if strategy == 'demolish'
+      json_to_import.each do |record|
+        puts "Handling #{record['url']}"
+        case strategy
+        when 'add'
+          import_record record
+        when 'replace'
+          import_record record, {:replace => true, :check=> true}
+        when 'demolish'
+          import_record record, {:replace => true, :check => false}
+        end
+      end
+    end
+  end
+  
+  def import_record(hash, options = {:replace => false, :check => true})
+    record = model.find_by_url(hash['url']) if options[:check]
+    if record && options[:replace]
+      puts "Deleting #{hash['url']}"
+      record.destroy if record
+    end
+    unless record && !options[:replace]
+      puts "Creating #{hash['url']}"
+      model.create hash
+    end
+  end
+  
+  def file_import_text
+    if params[:import] && params[:import][:file] && params[:import][:file][:tempfile]
+      params[:import][:file][:tempfile].read
+    end
+  end
+  
   get '/admin/*' do
     haml :content_form
   end

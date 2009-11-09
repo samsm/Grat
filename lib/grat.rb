@@ -27,7 +27,7 @@ class Grat::Application < Sinatra::Base
   get '/admin/__export' do
     content_type('text/json')
     # Content-disposition: attachment; filename=fname.ext
-    response['Content-disposition'] = "attachment; filename=grat-export-at-#{Time.now.strftime('%Y-%m-%d-%H-%M-%S')}.json"
+    response['Content-disposition'] = "attachment; filename=grat-#{request.host}-export-at-#{Time.now.strftime('%Y-%m-%d-%H-%M-%S')}.json"
     model.all.to_json
   end
   

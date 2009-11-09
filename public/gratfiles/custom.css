@@ -1,6 +1,7 @@
 /* @override 
 	http://localhost:9393/custom.css
 	http://grat.local/css/custom.css
+	http://localhost:9393/gratfiles/custom.css
 */
 
 .grat_greet {
@@ -38,4 +39,15 @@ textarea {
 p.editing {
   min-height: 1em;
   background-color: yellow;
+}
+
+input[type=file] {
+  padding-top: .5em;
+  font-size: 1.5em;
+}
+
+input[type=radio] {
+  width: 1em;
+  float: left;
+  margin-top: .25em;
 }

@@ -31,6 +31,10 @@ class Grat::Application < Sinatra::Base
     model.all.to_json
   end
   
+  get '/admin/__import' do
+    haml :import_form
+  end
+  
   get '/admin/*' do
     haml :content_form
   end

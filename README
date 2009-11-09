@@ -22,5 +22,5 @@ Use it like so:
 
 5. http://localhost:9292/admin/ (or whatever host:port) to add content.
 6. http://localhost:9292/admin/mypage edits a page that will be available at http://localhost:9292/mypage
-7. http://localhost:9292/admin/_all for a list of all pages
-8. http://localhost:9292/admin/_export to get a json dump of all pages
+7. http://localhost:9292/admin/__all for a list of all pages
+8. http://localhost:9292/admin/__export to get a json dump of all pages

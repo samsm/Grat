@@ -1,6 +1,6 @@
 .grat_greet
   %p Hey, import some json if you like.
-%form{:action => "/admin/__import", :method => 'post', :enctype=>'multipart/form-data' }
+%form{:action => "/__admin/import", :method => 'post', :enctype=>'multipart/form-data' }
   .import_file
     %label{:for => 'import_file'} Upload a json file:
     %input{:id => 'import_file', :type => 'file', :name => 'import[file]'}

@@ -18,27 +18,27 @@ class Grat::Application < Sinatra::Base
     file_data
   end
   
-  get '/admin/__all' do
+  get '/__admin/all' do
     @pages = model.all
     @templates = templates
     haml :list
   end
   
-  get '/admin/__export' do
+  get '/__admin/export' do
     content_type('text/json')
     # Content-disposition: attachment; filename=fname.ext
     response['Content-disposition'] = "attachment; filename=grat-#{request.host}-export-at-#{Time.now.strftime('%Y-%m-%d-%H-%M-%S')}.json"
     model.all.to_json
   end
   
-  get '/admin/__import' do
+  get '/__admin/import' do
     haml :import_form
   end
   
-  post '/admin/__import' do
+  post '/__admin/import' do
     json_text = file_import_text || params[:import][:text]
     @import_results = import(json_text, params[:import][:strategy])
-    redirect '/admin/__all'
+    redirect '/__admin/all'
   end
   
   # Rather inefficient at present.
@@ -75,13 +75,13 @@ class Grat::Application < Sinatra::Base
     end
   end
   
-  get '/admin/*' do
+  get '/__admin/*' do
     haml :content_form
   end
   
-  post '/admin/*' do
+  post '/__admin/*' do
     content.update_attributes(focus_params)
-    redirect "/admin#{content.url}"
+    redirect "/__admin#{content.url}"
   end
   
   get '/*' do
@@ -93,6 +93,10 @@ class Grat::Application < Sinatra::Base
                  merge(locals)
       combine_docs(sum,template, locals)
     end
+  end
+  
+  not_found do
+    haml :missing
   end
   
   def combine_docs(text,template,vars)

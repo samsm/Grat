@@ -1,17 +1,17 @@
 .grat_greet
   - if content.new_record?
-    %p 
+    %p
       Let's make some
       %strong= url
       content!
   - else
     %p
-      Editing 
+      Editing
       %a{:href => url}
         %strong= url
       content.
     
-%form{:action => "/admin#{url}", :method => 'post'}
+%form{:action => "/__admin#{url}", :method => 'post'}
   .template
     %label{:for => form_nest('template_url')} Template
     %select{:name => form_nest('template_url')}

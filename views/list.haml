@@ -6,7 +6,7 @@
     %li
       %a{:href => page.url}= page.url
       (
-      %a{:href => "/admin#{page.url}"} edit
+      %a{:href => "/__admin#{page.url}"} edit
       )
 %h2 Templates
 %ol
@@ -14,5 +14,5 @@
     %li
       %a{:href => template.url}= template.url
       (
-      %a{:href => "/admin#{template.url}"} edit
+      %a{:href => "/__admin#{template.url}"} edit
       )

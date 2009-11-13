@@ -11,7 +11,7 @@
         %strong= url
       content.
     
-%form{:action => "#{url}", :method => 'post'}
+%form{:action => "#{content.url}", :method => 'post'}
   .template
     %label{:for => form_nest('template_url')} Template
     %select{:name => form_nest('template_url')}

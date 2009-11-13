@@ -20,8 +20,17 @@ Use it like so:
   run Grat::Application
 4. rackup (or passenger, if you know how)
 
-5. http://localhost:9292/__admin/ (or whatever host:port) to add content.
-6. http://localhost:9292/__admin/mypage edits a page that will be available at http://localhost:9292/mypage
-7. http://localhost:9292/__admin/all for a list of all pages
-8. http://localhost:9292/__admin/export to get a json dump of all pages
-9. http://localhost:9292/__admin/import to import one of those dumps
+5. http://localhost:9292/__admin/edit/mypage edits a page that will be available at http://localhost:9292/mypage
+6. http://localhost:9292/__admin/all for a list of all pages
+7. http://localhost:9292/__admin/export to get a json dump of all pages
+8. http://localhost:9292/__admin/import to import one of those dumps
+
+9. Protect from writes by strangers with Rack::If
+   http://github.com/samsm/Rackif
+   
+   use Rack::If, :method => /(POST)|(PUT)|(DELETE)/ do
+     use Rack::Auth::Basic, "Grat protected" do |username, password|
+       'secret' == password
+     end
+   end
+   

@@ -1,0 +1,14 @@
+.grat_greet
+  - if content.new_record?
+    %p
+      What? There's no record here to delete.
+  - else
+    %p
+      Sure you want to delete
+      %a{:href => url}
+        %strong= url
+      content.
+    
+%form{:action => "#{url}", :method => 'post'}
+  %input{:type => 'hidden', :name => '_method', :value => 'delete'}
+  %input{:type => 'submit', :name => 'submit', :value => "Delete"}

@@ -5,6 +5,7 @@ class Grat::Application < Sinatra::Base
   include Grat::System
   
   set :views, Grat.view_path
+  set :methodoverride, true
   
   # serve some static assets directly from gem
   get '/gratfiles/:filename' do
@@ -75,13 +76,27 @@ class Grat::Application < Sinatra::Base
     end
   end
   
-  get '/__admin/*' do
+  get '/__admin/edit/*' do
     haml :content_form
   end
   
-  post '/__admin/*' do
+  get '/__admin/delete/*' do
+    haml :delete
+  end
+  
+  put '/*' do
     content.update_attributes(focus_params)
-    redirect "/__admin#{content.url}"
+    redirect edit_path(content.url)
+  end
+  
+  delete '/*' do
+    content.destroy
+    redirect edit_path(content.url)
+  end
+  
+  post '/*' do
+    content.update_attributes(focus_params)
+    redirect edit_path(content.url)
   end
   
   get '/*' do
@@ -99,10 +114,18 @@ class Grat::Application < Sinatra::Base
     haml :missing
   end
   
+  def edit_path(url)
+    "/__admin/edit#{url}"
+  end
+  
+  def delete_path(url)
+    "/__admin/delete#{url}"
+  end
+  
   def combine_docs(text,template,vars)
     template.content_with(vars,text)
   end
-      
+  
   def haml(*args)
     require 'haml'
     super(*args)

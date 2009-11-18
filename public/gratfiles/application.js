@@ -32,20 +32,20 @@ $(document).ready(function(){
       
       // Move to input field on enter 
       editable.keypress(function(event){
-				
-				// move to field input is cancelled if enter is pressed
-				if (event.which == 13) {
-				  
-				  // Remove editing class -- should add edited class maybe
-				  editable.removeClass('editing');
-				  
-				  // forward to text input
-				  $(editable).parent().children().filter('input').focus();
-				  return false
-				} else {
-				  return event.which
-				}
-			});
+        
+        // move to field input is cancelled if enter is pressed
+        if (event.which == 13) {
+          
+          // Remove editing class -- should add edited class maybe
+          editable.removeClass('editing');
+          
+          // forward to text input
+          $(editable).parent().children().filter('input').focus();
+          return false
+        } else {
+          return event.which
+        }
+      });
       
       editable.change(function() {
         console.log('blur');

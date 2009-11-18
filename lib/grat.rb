@@ -105,7 +105,7 @@ class Grat::Application < Sinatra::Base
   
   def next_content_url
     url = content.url
-    number      = url[/\d*\Z/] or 1
+    number      = url[/\d*\Z/]
     next_number = number.to_i + 1
     url.sub(/\d*\Z/, next_number.to_s)
   end

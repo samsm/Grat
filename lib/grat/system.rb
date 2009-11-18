@@ -39,6 +39,7 @@ module Grat::System
     if params[:template]
       template = model.find_by_url params[:template]
       if template
+        content.template_url = template.url
         content.suggested_fields = template.default_content_vars.keys
       end
     end

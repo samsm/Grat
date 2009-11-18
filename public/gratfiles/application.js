@@ -1,5 +1,19 @@
 // once page is loaded ...
 $(document).ready(function(){
+  $('.template select').change(function() {
+    // if template has url
+    selected_option = $(this).val()
+    if (selected_option) {
+      // look up template data
+      $.getJSON(selected_option, {ajax: 'true'}, function(j) {
+        for (var i = 0; i < j.length; i++) {
+          // place fields in form
+          console.log('hi');
+        }
+      })
+    }
+  })
+  
   // New field button + features
   $('a[href=#new_field]').click(function(){
     
@@ -30,22 +44,22 @@ $(document).ready(function(){
         input.attr('name',new_name);
       })
       
-      // Move to input field on enter 
+      // Move to input field on enter
       editable.keypress(function(event){
-				
-				// move to field input is cancelled if enter is pressed
-				if (event.which == 13) {
-				  
-				  // Remove editing class -- should add edited class maybe
-				  editable.removeClass('editing');
-				  
-				  // forward to text input
-				  $(editable).parent().children().filter('input').focus();
-				  return false
-				} else {
-				  return event.which
-				}
-			});
+        
+        // move to field input is cancelled if enter is pressed
+        if (event.which == 13) {
+          
+          // Remove editing class -- should add edited class maybe
+          editable.removeClass('editing');
+          
+          // forward to text input
+          $(editable).parent().children().filter('input').focus();
+          return false
+        } else {
+          return event.which
+        }
+      });
       
       editable.change(function() {
         console.log('blur');

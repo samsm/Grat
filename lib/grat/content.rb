@@ -1,6 +1,8 @@
 class Grat::Content
   include MongoMapper::Document
   
+  attr_accessor :suggested_fields
+  
   key :url, String
   validates_uniqueness_of :url
   key :content, String

@@ -33,6 +33,11 @@
     %div{:class => k}
       %label{:for => form_nest(k)}= k.capitalize
       %input{:name => form_nest(k), :value => v}
+  #suggested_fields
+    - content.suggested_fields.each do |field|
+      %div{:class => field}
+        %label{:for => form_nest(field)}= field.capitalize
+        %input{:name => form_nest(field)}
   #new_fields
     %p
       %a.add{:href=>'#new_field'} Add a New Field

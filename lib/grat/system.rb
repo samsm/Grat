@@ -18,7 +18,18 @@ module Grat::System
   end
   
   def content
-    @content ||= model.find_by_url(url) || model.new(:url => url)
+    @content ||= model.find_by_url(url) || new_content
+  end
+  
+  def new_content
+    content = model.new(:url => url)
+    if params[:template]
+      template = model.find_by_url params[:template]
+      if template
+        content.suggested_fields = template.default_content_vars.keys
+      end
+    end
+    content
   end
       
   def model

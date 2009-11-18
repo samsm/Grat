@@ -10,8 +10,6 @@ module Grat::System
   end
   
   def request_type
-    require 'ruby-debug'
-    debugger
     case env['HTTP_ACCEPT']
     when /html/
       'html'

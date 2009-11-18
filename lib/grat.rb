@@ -77,7 +77,6 @@ class Grat::Application < Sinatra::Base
   end
   
   get '/__admin/edit/*' do
-    request_type
     haml :content_form
   end
   
@@ -102,12 +101,19 @@ class Grat::Application < Sinatra::Base
   
   get '/*' do
     pass if content.new_record?
-    locals = {}
-    template_chain.inject('') do |sum, template|
-      locals = template.default_content_vars.
-                 merge(template.attributes_for_variables).
-                 merge(locals)
-      combine_docs(sum,template, locals)
+    
+    case request_type
+    when 'html'
+      locals = {}
+      template_chain.inject('') do |sum, template|
+        locals = template.default_content_vars.
+                   merge(template.attributes_for_variables).
+                   merge(locals)
+        combine_docs(sum,template, locals)
+      end
+    when 'json'
+      response['Content-Type'] = 'application/json'
+      content.to_json
     end
   end
   

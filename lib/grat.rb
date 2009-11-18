@@ -107,7 +107,12 @@ class Grat::Application < Sinatra::Base
     url = content.url
     number      = url[/\d*\Z/]
     next_number = number.to_i + 1
-    url.sub(/\d*\Z/, next_number.to_s)
+    url.sub!(/\d*\Z/, next_number.to_s)
+    if content.template_url
+      url + '?template=' + content.template_url
+    else
+      url
+    end
   end
   
   get '/*' do

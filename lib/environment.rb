@@ -20,22 +20,17 @@ module Grat
   end
   
   def self.database_load
-    require lib_path + '/grat/mongomapper_patches'
-    connection = if @@database_conf[:host]
-      # auth = db.authenticate(my_user_name, my_password)
-      Mongo::Connection.new(@@database_conf[:host])
-    else
-      Mongo::Connection.new
+    require 'mongomapper'
+    if @@database_conf[:host]
+      MongoMapper.connection = Mongo::Connection.new(@@database_conf[:host])
     end
     
-    database = connection.db(@@database_conf[:database] || 'grat_development')
+    MongoMapper.database = @@database_conf[:database] || 'grat_development'
     
     if @@database_conf[:username] && @@database_conf[:password]
-      database.authenticate(@@database_conf[:username], @@database_conf[:password])
+      MongoMapper.database.authenticate(@@database_conf[:username], @@database_conf[:password])
     end
-    
-    MongoMapper.direct_database = database
-    
+        
     require Grat.lib_path + '/grat/content'
     
   end

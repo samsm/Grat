@@ -3,7 +3,7 @@ require 'rubygems'
 require 'rake'
 require 'echoe'
 
-Echoe.new('grat', '0.0.8') do |p|
+Echoe.new('grat', '0.1.0') do |p|
   p.summary        = "Minimal CMS for Rack and MongoDB."
   p.description    = "Basic interface for making webpages with Haml and Erb. Supports nested templates."
   p.url            = "http://samsm.com/"

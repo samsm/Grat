@@ -7,7 +7,7 @@ $(document).ready(function(){
       // look up template data
       $.getJSON(selected_option, {ajax: 'true'}, function(j) {
         // clear current suggested fields -- in future check for data first
-        $('#suggested_fields').inner_html = '';
+        $('#suggested_fields').html('');
         for (key in j['default_content_vars']) {
           new_field = '<div class="'+ key +'"><label for="content['+ key +']">'+ key +'</label><input name="content['+ key +']" /></div>';
           $.test = new_field;

@@ -96,7 +96,18 @@ class Grat::Application < Sinatra::Base
   
   post '/*' do
     content.update_attributes(focus_params)
-    redirect edit_path(content.url)
+    if params[:content][:submit].include? 'make'
+      redirect edit_path(next_content_url)
+    else
+      redirect edit_path(content.url)
+    end
+  end
+  
+  def next_content_url
+    url = content.url
+    number      = url[/\d*\Z/] or 1
+    next_number = number.to_i + 1
+    url.sub(/\d*\Z/, next_number.to_s)
   end
   
   get '/*' do

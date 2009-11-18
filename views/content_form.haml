@@ -44,6 +44,7 @@
     
   .submit
     %input{:name => form_nest('submit'), :type => 'submit', :value => "Let's save this thing"}
+    %input{:name => form_nest('submit'), :type => 'submit', :value => "Save and make another"}
   .defaults
     %label{:for => form_nest('default_content_vars')} Default Content
     %textarea{:id => 'default_content_vars', :name => form_nest('default_content_vars')}= content.default_content_vars.to_json

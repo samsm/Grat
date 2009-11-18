@@ -109,5 +109,7 @@ class Grat::Content
     send "#{render_engine}_render", y, content, locals
   end
   
-  
+  def suggested_fields
+    @suggested_fields or []
+  end
 end

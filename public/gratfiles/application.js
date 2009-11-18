@@ -6,9 +6,12 @@ $(document).ready(function(){
     if (selected_option) {
       // look up template data
       $.getJSON(selected_option, {ajax: 'true'}, function(j) {
-        for (var i = 0; i < j.length; i++) {
-          // place fields in form
-          console.log('hi');
+        // clear current suggested fields -- in future check for data first
+        $('#suggested_fields').inner_html = '';
+        for (key in j['default_content_vars']) {
+          new_field = '<div class="'+ key +'"><label for="content['+ key +']">'+ key +'</label><input name="content['+ key +']" /></div>';
+          $.test = new_field;
+          $('#suggested_fields').append(new_field);
         }
       })
     }

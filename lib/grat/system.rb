@@ -9,6 +9,19 @@ module Grat::System
     collection
   end
   
+  def request_type
+    require 'ruby-debug'
+    debugger
+    case env['HTTP_ACCEPT']
+    when /html/
+      'html'
+    when /json/
+      'json'
+    when /xml/ #?
+      'xml'
+    end
+  end
+  
   not_found do
     missing_page
   end

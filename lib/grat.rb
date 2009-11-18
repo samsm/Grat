@@ -77,6 +77,7 @@ class Grat::Application < Sinatra::Base
   end
   
   get '/__admin/edit/*' do
+    request_type
     haml :content_form
   end
   

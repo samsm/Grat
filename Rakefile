@@ -1,16 +1,56 @@
-# Rakefile
 require 'rubygems'
 require 'rake'
-require 'echoe'
 
-Echoe.new('grat', '0.1.1') do |p|
-  p.summary        = "Minimal CMS for Rack and MongoDB."
-  p.description    = "Basic interface for making webpages with Haml and Erb. Supports nested templates."
-  p.url            = "http://samsm.com/"
-  p.author         = "Sam Schenkman-Moore"
-  p.email          = "samsm@samsm.com"
-  p.ignore_pattern = ["tmp/*", "script/*"]
-  p.runtime_dependencies = ['sinatra','haml','mongomapper','json']
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gem|
+    gem.name = "grat"
+    gem.summary = "Minimal CMS for Rack and MongoDB."
+    gem.description = "Basic interface for making webpages with Haml and Erb. Supports nested templates."
+    gem.email = "samsm@samsm.com"
+    gem.homepage = "http://github.com/samsm/grat"
+    gem.authors = ["Sam Schenkman-Moore"]
+    # gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
+    gem.add_development_dependency "yard", ">= 0"
+    gem.add_runtime_dependency 'sinatra'
+    gem.add_runtime_dependency 'haml'
+    gem.add_runtime_dependency 'mongomapper'
+    gem.add_runtime_dependency 'json'
+    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+  end
+rescue LoadError
+  puts "Jeweler (or a dependency) not available. Install it with: sudo gem install jeweler"
 end
 
-Dir["#{File.dirname(__FILE__)}/tasks/*.rake"].sort.each { |ext| load ext }
+require 'rake/testtask'
+Rake::TestTask.new(:test) do |test|
+  test.libs << 'lib' << 'test'
+  test.pattern = 'test/**/test_*.rb'
+  test.verbose = true
+end
+
+begin
+  require 'rcov/rcovtask'
+  Rcov::RcovTask.new do |test|
+    test.libs << 'test'
+    test.pattern = 'test/**/test_*.rb'
+    test.verbose = true
+  end
+rescue LoadError
+  task :rcov do
+    abort "RCov is not available. In order to run rcov, you must: sudo gem install spicycode-rcov"
+  end
+end
+
+task :test => :check_dependencies
+
+task :default => :test
+
+begin
+  require 'yard'
+  YARD::Rake::YardocTask.new
+rescue LoadError
+  task :yardoc do
+    abort "YARD is not available. In order to run yardoc, you must: sudo gem install yard"
+  end
+end

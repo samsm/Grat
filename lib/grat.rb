@@ -95,9 +95,9 @@ class Grat::Application < Sinatra::Base
     else
       @content = model.find_by_url '/new-page/1'
       if @content
-        redirect edit_path next_content_url
+        redirect edit_path(next_content_url)
       else
-        redirect edit_path '/new-page/1'
+        redirect edit_path('/new-page/1')
       end
     end
   end

@@ -51,3 +51,10 @@ input[type=radio] {
   float: left;
   margin-top: .25em;
 }
+
+.new_page input {
+  width: 33%;
+}
+.new_page input[type=submit] {
+  width: 6em;
+}

@@ -84,6 +84,24 @@ class Grat::Application < Sinatra::Base
     haml :delete
   end
   
+  get '/__admin/new' do
+    url = params[:url]
+    if url.to_s[/./]
+      if url[/\A\//] # begins with a slash
+        redirect edit_path(url)
+      else # add the slash ourselves
+        redirect edit_path("/#{url}")
+      end
+    else
+      @content = model.find_by_url '/new-page/1'
+      if @content
+        redirect edit_path next_content_url
+      else
+        redirect edit_path '/new-page/1'
+      end
+    end
+  end
+  
   put '/*' do
     content.update_attributes(focus_params)
     redirect edit_path(content.url)
@@ -104,14 +122,19 @@ class Grat::Application < Sinatra::Base
   end
   
   def next_content_url
-    url = content.url
-    number      = url[/\d*\Z/]
-    next_number = number.to_i + 1
-    url.sub!(/\d*\Z/, next_number.to_s)
+    current_content = content
+    new_url = '/broken'
+    while current_content
+      url         = current_content.url
+      number      = url[/\d*\Z/]
+      next_number = number.to_i + 1
+      new_url = url.sub(/\d*\Z/, next_number.to_s)
+      current_content = model.find_by_url(url.sub(/\d*\Z/, next_number.to_s))
+    end
     if content.template_url
-      url + '?template=' + content.template_url
+      new_url + '?template=' + content.template_url
     else
-      url
+      new_url
     end
   end
   

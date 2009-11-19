@@ -1,6 +1,11 @@
 .grat_greet
   %p Great. Here's everything. Hope you're happy.
-%h1 Pages
+%h2 Make a new page
+.new_page
+  %form{:action => "/__admin/new"}
+    %input{:name => 'url'}
+    %input{:name => "submit", :value=>'New Page', :type => 'submit'}
+%h2 Pages
 %ol
   - @pages.each do |page|
     %li

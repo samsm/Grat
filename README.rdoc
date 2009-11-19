@@ -1,4 +1,4 @@
-= grat
+= Grat
 
 Grat is a minimal content management dealy.
 
@@ -12,16 +12,16 @@ Use it like so:
 1. Install gem (may need to set up gemcutter)
 2. Fresh directory
 3. config.ru file containing:
-  require 'rubygems'
-  require 'rack'
-  require 'grat'
+    require 'rubygems'
+    require 'rack'
+    require 'grat'
 
-  Grat.database_conf # uses defaults, database=grat_development
-  # to override:
-  # Grat.database_conf(:host => 'localhost', :database => 'grat_special')
+    Grat.database_conf # uses defaults, database=grat_development
+    # to override:
+    # Grat.database_conf(:host => 'localhost', :database => 'grat_special')
 
-  use Rack::ShowExceptions # <- Up to you.
-  run Grat::Application
+    use Rack::ShowExceptions # <- Up to you.
+    run Grat::Application
 4. rackup (or passenger, if you know how)
 
 5. http://localhost:9292/__admin/edit/mypage edits a page that will be available at http://localhost:9292/mypage
@@ -30,13 +30,13 @@ Use it like so:
 8. http://localhost:9292/__admin/import to import one of those dumps
 
 9. Protect from writes by strangers with Rack::If
-   http://github.com/samsm/Rackif
+     # http://github.com/samsm/Rackif
    
-   use Rack::If, :method => /(POST)|(PUT)|(DELETE)/ do
-     use Rack::Auth::Basic, "Grat protected" do |username, password|
-       'secret' == password
+     use Rack::If, :method => /(POST)|(PUT)|(DELETE)/ do
+       use Rack::Auth::Basic, "Grat protected" do |username, password|
+         'secret' == password
+       end
      end
-   end
 
 
 == Note on Patches/Pull Requests

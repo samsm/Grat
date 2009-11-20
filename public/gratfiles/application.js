@@ -1,5 +1,25 @@
 // once page is loaded ...
 $(document).ready(function(){
+  
+  // Collapse fields
+  $('textarea').each(function() {
+    // textarea = $(this)
+    // $.t = textarea
+    // add a collapse link before each textarea
+    collapse_link = $(' <a href="#collapse" class="collapse">collapse</a> ')
+    collapse_link.filter('a').click(function() {
+      $(this).siblings().filter('textarea').hide()
+    })
+    $(this).before(collapse_link);
+    // give link ability to collapse stuff
+    // collapse_link.click(function() {
+    //   $.th = this
+    //   this.sibling().filter('textarea')
+    // })
+    
+  })
+  
+  // Add fields for selected template.
   $('.template select').change(function() {
     // if template has url
     selected_option = $(this).val()

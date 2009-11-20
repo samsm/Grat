@@ -1,4 +1,4 @@
-/* @override 
+/* @override
 	http://localhost:9393/custom.css
 	http://grat.local/css/custom.css
 	http://localhost:9393/gratfiles/custom.css
@@ -57,4 +57,8 @@ input[type=radio] {
 }
 .new_page input[type=submit] {
   width: 6em;
+}
+a.collapse {
+  font-size: 1em;
+  font-weight: normal;
 }

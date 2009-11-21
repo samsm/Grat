@@ -62,3 +62,19 @@ a.collapse {
   font-size: 1em;
   font-weight: normal;
 }
+
+.activeCollapse textarea {
+  display: none;
+}
+
+.activeCollapse .collapser {
+  display:none;
+}
+
+.expander {
+  display: none;
+}
+
+.activeCollapse .expander {
+  display: inline;
+}

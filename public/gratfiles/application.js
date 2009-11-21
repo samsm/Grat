@@ -2,21 +2,19 @@
 $(document).ready(function(){
   
   // Collapse fields
-  $('textarea').each(function() {
-    // textarea = $(this)
-    // $.t = textarea
-    // add a collapse link before each textarea
-    collapse_link = $(' <a href="#collapse" class="collapse">collapse</a> ')
+  $('.collapsable').each(function() {
+    parent_div = $(this);
+    collapse_link = $(' <a href="#collapse" class="collapser">collapse</a> ')
     collapse_link.filter('a').click(function() {
-      $(this).siblings().filter('textarea').hide()
-    })
-    $(this).before(collapse_link);
-    // give link ability to collapse stuff
-    // collapse_link.click(function() {
-    //   $.th = this
-    //   this.sibling().filter('textarea')
-    // })
-    
+      $(this).parent().addClass('activeCollapse');
+      return false;
+    });
+    expand_link = $(' <a href="#expand" class="expander">expand</a> ')
+    expand_link.filter('a').click(function() {
+      $(this).parent().removeClass('activeCollapse');
+      return false;
+    });
+    parent_div.prepend(expand_link).prepend(collapse_link);
   })
   
   // Add fields for selected template.

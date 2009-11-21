@@ -15,6 +15,9 @@ $(document).ready(function(){
       return false;
     });
     parent_div.children().filter('label').after(expand_link).after(collapse_link);
+    if (parent_div.hasClass('collapsed')) {
+      parent_div.addClass('activeCollapse');
+    }
   })
   
   // Add fields for selected template.

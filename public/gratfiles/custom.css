@@ -78,3 +78,6 @@ a.collapse {
 .activeCollapse .expander {
   display: inline;
 }
+.expander, .collapser {
+  margin-left: 1em;
+}

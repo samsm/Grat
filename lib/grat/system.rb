@@ -47,8 +47,8 @@ module Grat::System
   def model
     return @model if @model
     
-    # Sinatra reloads are slow when mongomapper has to re-require
-    # This avoids requiring mongomapper when it isn't needed
+    # Sinatra reloads are slow when mongoid has to re-require
+    # This avoids requiring mongoid when it isn't needed
     Grat.database_load
     
     @model = Grat::Content

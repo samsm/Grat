@@ -38,6 +38,10 @@ module Grat
     require Grat.lib_path + '/grat/content'
     
   end
+  
+  def self.database
+    Mongoid.database
+  end
 end
 
 require Grat.lib_path + '/grat/system'

@@ -40,14 +40,5 @@ module Grat
   end
 end
 
-# Hack till Mongoid supports remote MongoDB hosts
-module Mongoid
-  def self.database=(mongo_db)
-    raise 'BadDatabaseError' unless mongo_db.kind_of?(Mongo::DB)
-    @@connection = mongo_db.connection
-    @@database   = mongo_db
-  end
-end
-
 require Grat.lib_path + '/grat/system'
 require Grat.lib_path + '/grat/hash_binding'

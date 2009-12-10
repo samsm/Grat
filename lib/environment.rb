@@ -2,6 +2,7 @@ require 'sinatra'
 require 'json'
 
 module Grat
+  @@connection = nil
   @@database_conf = {}
   def self.root_path
     File.dirname(File.dirname(__FILE__))
@@ -20,19 +21,31 @@ module Grat
   end
   
   def self.database_load
-    require 'mongomapper'
-    if @@database_conf[:host]
-      MongoMapper.connection = Mongo::Connection.new(@@database_conf[:host])
+    require 'mongoid'
+    @@connection = if @@database_conf[:host]
+      Mongo::Connection.new(@@database_conf[:host])
+    else
+      Mongo::Connection.new
     end
     
-    MongoMapper.database = @@database_conf[:database] || 'grat_development'
-    
+    database = @@connection.db(@@database_conf[:database] || 'grat_development')
     if @@database_conf[:username] && @@database_conf[:password]
-      MongoMapper.database.authenticate(@@database_conf[:username], @@database_conf[:password])
+      database.authenticate(@@database_conf[:username], @@database_conf[:password])
     end
-        
+    
+    Mongoid.database = database
+    
     require Grat.lib_path + '/grat/content'
     
+  end
+end
+
+# Hack till Mongoid supports remote MongoDB hosts
+module Mongoid
+  def self.database=(mongo_db)
+    raise 'BadDatabaseError' unless mongo_db.kind_of?(Mongo::DB)
+    @@connection = mongo_db.connection
+    @@database   = mongo_db
   end
 end
 

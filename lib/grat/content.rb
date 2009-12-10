@@ -1,17 +1,15 @@
-class Grat::Content
-  include MongoMapper::Document
-  
+class Grat::Content < Mongoid::Document
+  include Mongoid::Timestamps
   attr_accessor :suggested_fields
   
-  key :url, String
+  field :url
   validates_uniqueness_of :url
-  key :content, String
-  key :tags, Array
-  key :template_url, String
-  timestamps!
+  field :content
+  field :tags, :type => Array
+  field :template_url
   
   before_save :detect_default_content_vars
-  key :default_content_vars, Hash
+  field :default_content_vars, :type => Hash
   
   def attributes_for_variables
     attributes.reject {|k,v| k == '_id' }
@@ -41,7 +39,7 @@ class Grat::Content
   end
   
   def default_content_vars
-    super or {}
+    @default_content_vars or {}
   end
   
   def template

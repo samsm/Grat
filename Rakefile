@@ -14,7 +14,7 @@ begin
     gem.add_development_dependency "yard", ">= 0"
     gem.add_runtime_dependency 'sinatra'
     gem.add_runtime_dependency 'haml'
-    gem.add_runtime_dependency 'mongomapper'
+    gem.add_runtime_dependency 'mongoid'
     gem.add_runtime_dependency 'json'
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end

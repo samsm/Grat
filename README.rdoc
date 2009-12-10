@@ -32,7 +32,7 @@ Use it like so:
 9. Protect from writes by strangers with Rack::If
      # http://github.com/samsm/Rackif
    
-     use Rack::If, :method => /(POST)|(PUT)|(DELETE)/ do
+     use Rack::If, {:method => /(POST)|(PUT)|(DELETE)/, :path => /__admin/}, :any do
        use Rack::Auth::Basic, "Grat protected" do |username, password|
          'secret' == password
        end

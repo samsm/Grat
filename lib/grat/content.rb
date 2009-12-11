@@ -27,7 +27,11 @@ class Grat::Content < Mongoid::Document
   end
   
   def tags=(val)
-    super(val.kind_of?(Array) ? val : val.split(' '))
+    @attributes[:tags] = (val.kind_of?(Array) ? val : val.split(' '))
+  end
+  
+  def tags
+    @attributes[:tags] or []
   end
   
   def self.find_all_by_tag(tag_name)
@@ -39,7 +43,11 @@ class Grat::Content < Mongoid::Document
   end
   
   def default_content_vars
-    @default_content_vars or {}
+    @attributes[:default_content_vars] or {}
+  end
+  
+  def default_content_vars=(val)
+    @attributes[:default_content_vars] = val.kind_of?(String) ? JSON.parse(val) : val
   end
   
   def template
@@ -51,7 +59,7 @@ class Grat::Content < Mongoid::Document
   end
   
   def template_url=(var)
-    super(var) unless var.nil? || var.empty?
+    @attributes[:template_url] = var unless var.nil? || var.empty?
   end
   
   def demo_string
@@ -78,7 +86,7 @@ class Grat::Content < Mongoid::Document
       (detect_problem_var(problem_var => demo_string) ||
         default_content_vars.merge!(problem_var => demo_string)) or
       (detect_problem_var(problem_var => demo_array) ||
-        default_content_vars.merge!(problem_var => demo_string)) or
+        default_content_vars.merge!(problem_var => demo_array)) or
       raise "Don't know how to reconcile."
     end
   end

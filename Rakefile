@@ -10,11 +10,10 @@ begin
     gem.email = "samsm@samsm.com"
     gem.homepage = "http://github.com/samsm/grat"
     gem.authors = ["Sam Schenkman-Moore"]
-    # gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
     gem.add_development_dependency "yard", ">= 0"
     gem.add_runtime_dependency 'sinatra'
     gem.add_runtime_dependency 'haml'
-    gem.add_runtime_dependency 'mongoid'
+    gem.add_runtime_dependency 'mongoid', "0.9.11"
     gem.add_runtime_dependency 'json'
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end

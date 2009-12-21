@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{grat}
-  s.version = "0.2.0"
+  s.version = "0.2.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Sam Schenkman-Moore"]
-  s.date = %q{2009-12-10}
+  s.date = %q{2009-12-21}
   s.description = %q{Basic interface for making webpages with Haml and Erb. Supports nested templates.}
   s.email = %q{samsm@samsm.com}
   s.extra_rdoc_files = [
@@ -30,6 +30,7 @@ Gem::Specification.new do |s|
      "doc/fr_method_index.html",
      "doc/index.html",
      "doc/rdoc-style.css",
+     "grat.gemspec",
      "lib/environment.rb",
      "lib/grat.rb",
      "lib/grat/content.rb",
@@ -96,20 +97,20 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<yard>, [">= 0"])
       s.add_runtime_dependency(%q<sinatra>, [">= 0"])
       s.add_runtime_dependency(%q<haml>, [">= 0"])
-      s.add_runtime_dependency(%q<mongoid>, [">= 0"])
+      s.add_runtime_dependency(%q<mongoid>, ["= 0.9.11"])
       s.add_runtime_dependency(%q<json>, [">= 0"])
     else
       s.add_dependency(%q<yard>, [">= 0"])
       s.add_dependency(%q<sinatra>, [">= 0"])
       s.add_dependency(%q<haml>, [">= 0"])
-      s.add_dependency(%q<mongoid>, [">= 0"])
+      s.add_dependency(%q<mongoid>, ["= 0.9.11"])
       s.add_dependency(%q<json>, [">= 0"])
     end
   else
     s.add_dependency(%q<yard>, [">= 0"])
     s.add_dependency(%q<sinatra>, [">= 0"])
     s.add_dependency(%q<haml>, [">= 0"])
-    s.add_dependency(%q<mongoid>, [">= 0"])
+    s.add_dependency(%q<mongoid>, ["= 0.9.11"])
     s.add_dependency(%q<json>, [">= 0"])
   end
 end

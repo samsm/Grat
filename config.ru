@@ -2,6 +2,7 @@
 require 'rubygems'
 require 'rack'
 require 'lib/grat'
+require 'ruby-debug'
 
 Grat.database_conf # uses defaults
 # to override:

@@ -7,38 +7,36 @@ module Grat
   def self.root_path
     File.dirname(File.dirname(__FILE__))
   end
-  
+
   def self.lib_path
     root_path + '/lib'
   end
-  
+
   def self.view_path
     root_path + '/views'
   end
-  
+
   def self.database_conf(options = {})
     @@database_conf = options
   end
-  
+
   def self.database_load
-    require 'mongoid'
-    @@connection = if @@database_conf[:host]
-      Mongo::Connection.new(@@database_conf[:host])
-    else
-      Mongo::Connection.new
+    require 'mongo_mapper'
+    if @@database_conf[:host]
+      MongoMapper.connection = Mongo::Connection.new(@@database_conf[:host])
     end
-    
-    database = @@connection.db(@@database_conf[:database] || 'grat_development')
+
+    MongoMapper.database = @@database_conf[:database] || 'grat_development'
+
     if @@database_conf[:username] && @@database_conf[:password]
-      database.authenticate(@@database_conf[:username], @@database_conf[:password])
+      MongoMapper.database.authenticate(@@database_conf[:username], @@database_conf[:password])
     end
-    
-    Mongoid.database = database
-    
+
     require Grat.lib_path + '/grat/content'
-    
+
   end
-  
+
+
   def self.database
     Mongoid.database
   end

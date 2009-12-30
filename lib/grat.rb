@@ -113,7 +113,6 @@ class Grat::Application < Sinatra::Base
   end
 
   post '/*' do
-    # debugger
     content.update_attributes(focus_params)
     if params[:content][:submit].include? 'make'
       redirect edit_path(next_content_url)

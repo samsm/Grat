@@ -36,9 +36,8 @@ module Grat
 
   end
 
-
   def self.database
-    Mongoid.database
+    MongoMapper.database
   end
 end
 

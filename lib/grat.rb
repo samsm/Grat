@@ -19,7 +19,7 @@ class Grat::Application < Sinatra::Base
     file_data
   end
 
-  get '/__admin/all' do
+  get '/__admin/' do
     @pages = model.all
     @templates = templates
     haml :list
@@ -39,7 +39,7 @@ class Grat::Application < Sinatra::Base
   post '/__admin/import' do
     json_text = file_import_text || params[:import][:text]
     @import_results = import(json_text, params[:import][:strategy])
-    redirect '/__admin/all'
+    redirect '/__admin/'
   end
 
   # Rather inefficient at present.

@@ -1,7 +1,12 @@
 .grat_greet
   %p Great. Here's everything. Hope you're happy.
-%h2 Make a new page
+%ul
+  %li
+    %a{:href => "/__admin/import"} Import
+  %li
+    %a{:href => "/__admin/export"} Export
 .new_page
+  %h2 Make a new page
   %form{:action => "/__admin/new"}
     %input{:name => 'url'}
     %input{:name => "submit", :value=>'New Page', :type => 'submit'}

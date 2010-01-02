@@ -1,16 +1,18 @@
 .grat_greet
-  - if content.new_record?
-    %p
+  %p
+    - if content.new_record?
       Let's make some
       %strong= url
       content!
-  - else
-    %p
+    - else
       Editing
       %a{:href => url}
         %strong= url
       content.
-    
+    (or go to the
+    %a{:href => '/__admin/'} page list
+    )
+
 %form{:action => "#{content.url}", :method => 'post'}
   .template
     %label{:for => form_nest('template_url')} Template
@@ -41,7 +43,7 @@
   #new_fields
     %p
       %a.add{:href=>'#new_field'} Add a New Field
-    
+
   .submit
     %input{:name => form_nest('submit'), :type => 'submit', :value => "Let's save this thing"}
     %input{:name => form_nest('submit'), :type => 'submit', :value => "Save and make another"}

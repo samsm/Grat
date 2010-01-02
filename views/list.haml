@@ -19,10 +19,16 @@
       %a{:href => edit_path(page.url)} edit
       )
 %h2 Templates
-%ol
-  - @templates.each do |template|
-    %li
-      %a{:href => template.url}= template.url
-      (
-      %a{:href => edit_path(template.url)} edit
-      )
+- if @templates.any?
+  %ol
+    - @templates.each do |template|
+      %li
+        %a{:href => template.url}= template.url
+        (
+        %a{:href => edit_path(template.url)} edit
+        )
+- else
+  %p
+    Templates are ordinary pages with the tag
+    %strong template
+    \.

@@ -185,6 +185,73 @@ class Grat::Application < Sinatra::Base
     def form_nest(name)
       "content[#{name}]"
     end
+
+    # The next few methods build the tree for the file list
+    # This can likely be greatly simpified and more efficient.
+    def peel(pages, start)
+      pages.each do |page|
+        if under?(start,page)
+          if immediate_child?(start,page)
+            start.children << page
+          else
+            # Skip if already done
+            unless start.children.detect {|ec| ec.url == next_dir(start,page) }
+              ec = Grat::EmptyContent.new(next_dir(start,page))
+              peel(pages,ec)
+              unless start.children.detect {|c| c.url == ec.url }
+                start.children << ec
+              end
+            end
+          end
+        end
+      end
+    end
+
+    def under?(start,other)
+      other.url.index(start.url) == 0 && other.url != start.url
+    end
+
+    def next_dir(start,other)
+      other.url.match(/#{start.url}?[^\/]+\//)[0]
+    end
+
+    def immediate_child?(start,other)
+      !url_difference(start,other).index('/')
+    end
+
+    def url_difference(start,other)
+      other.url.sub(/#{start.url}/, '')
+    end
+
+    def recursive_url_list(page)
+      puts page.url
+      page.children.each { |c| recursive_url_list(c) }
+    end
+
+    # only works if there's a url '/'
+    def nested_root
+      pages = @pages.sort_by {|p| p.url }
+      first = pages.first
+      peel(pages, first)
+      first
+    end
+
+    def nested_root_list
+      to_list([nested_root])
+    end
+
+    def to_list(pages)
+      if pages.any?
+        '<ol>' +
+        pages.collect do |page|
+          "<li><a class='#{page.class.to_s.downcase[/[a-z]+\Z/]}' href='#{page.url}'>#{page.url}</a>" +
+          to_list(page.children) +
+          "</li>"
+        end.join('') +
+        '</ol>'
+      end or ''
+    end
+
   end
 
 end

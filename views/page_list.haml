@@ -1,0 +1,7 @@
+- if pages.any?
+  %ol
+    - pages.each do |page|
+      %li
+        %a{:href => page.url}= page.url
+        - if page.children.any?
+          = haml :page_list, :locals => {:pages => page.children}, :layout => false

@@ -240,18 +240,6 @@ class Grat::Application < Sinatra::Base
       to_list([nested_root])
     end
 
-    def to_list(pages)
-      if pages.any?
-        '<ol>' +
-        pages.collect do |page|
-          "<li><a class='#{page.class.to_s.downcase[/[a-z]+\Z/]}' href='#{page.url}'>#{page.url}</a>" +
-          to_list(page.children) +
-          "</li>"
-        end.join('') +
-        '</ol>'
-      end or ''
-    end
-
   end
 
 end

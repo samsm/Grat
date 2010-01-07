@@ -1,9 +1,7 @@
 .grat_greet
   %p Great. Here's everything. Hope you're happy.
 .pages
-  -# h = {} ; pages.each {|p| dir = p.url.sub(/[^\/]+.\Z/,'') ; h[dir] ||= [] ; h[dir] << p }
-  = nested_root_list
-  %p (after list)
+  = haml :page_list, :locals => {:pages => [nested_root]}, :layout => false
 
 %ul
   %li

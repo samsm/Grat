@@ -2,6 +2,16 @@
   %ol
     - pages.each do |page|
       %li
-        %a{:href => page.url}= page.url
+        %a{:href => "/__admin/edit#{page.url}", :class => page.class.to_s.downcase[/[a-z]+\Z/]}= page.url
+        - if page.class == Grat::Content
+          %span.tags
+            = page.tags.join(', ')
+          %span.template
+            - if page.template
+              = page.template
+            - else
+              No template!
+        - else
+          %span.missing_message <-- Page missing, click to create it
         - if page.children.any?
           = haml :page_list, :locals => {:pages => page.children}, :layout => false

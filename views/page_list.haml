@@ -11,6 +11,8 @@
               = page.template
             - else
               No template!
+          %span.created
+            8 Jan 2009
         - else
           %span.missing_message <-- Page missing, click to create it
         - if page.children.any?

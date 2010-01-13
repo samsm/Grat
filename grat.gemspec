@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Sam Schenkman-Moore"]
-  s.date = %q{2009-12-29}
+  s.date = %q{2010-01-12}
   s.description = %q{Basic interface for making webpages with Haml and Erb. Supports nested templates.}
   s.email = %q{samsm@samsm.com}
   s.extra_rdoc_files = [
@@ -97,20 +97,20 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<yard>, [">= 0"])
       s.add_runtime_dependency(%q<sinatra>, [">= 0"])
       s.add_runtime_dependency(%q<haml>, [">= 0"])
-      s.add_runtime_dependency(%q<mongo_mapper>, ["= 0.6.8"])
+      s.add_runtime_dependency(%q<mongo_mapper>, ["= 0.6.10"])
       s.add_runtime_dependency(%q<json>, [">= 0"])
     else
       s.add_dependency(%q<yard>, [">= 0"])
       s.add_dependency(%q<sinatra>, [">= 0"])
       s.add_dependency(%q<haml>, [">= 0"])
-      s.add_dependency(%q<mongo_mapper>, ["= 0.6.8"])
+      s.add_dependency(%q<mongo_mapper>, ["= 0.6.10"])
       s.add_dependency(%q<json>, [">= 0"])
     end
   else
     s.add_dependency(%q<yard>, [">= 0"])
     s.add_dependency(%q<sinatra>, [">= 0"])
     s.add_dependency(%q<haml>, [">= 0"])
-    s.add_dependency(%q<mongo_mapper>, ["= 0.6.8"])
+    s.add_dependency(%q<mongo_mapper>, ["= 0.6.10"])
     s.add_dependency(%q<json>, [">= 0"])
   end
 end

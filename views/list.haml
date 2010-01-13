@@ -1,8 +1,19 @@
-.grat_greet
-  %p Great. Here's everything. Hope you're happy.
-.pages
-  = haml :page_list, :locals => {:pages => [nested_root]}, :layout => false
+%h1 Grat
+.panel.mod
+  %h2 Pages
+  .pages
+    = haml :page_list, :locals => {:pages => [nested_root]}, :layout => false
+  .info
+    %ul
+      %li
+        %a{:href => '#properties'} Properties
+      %li
+        %a{:href => '#new_page'} New page
 
+    #properties
+      %p Hi
+    #new_page
+      %p Hello there.
 %ul
   %li
     %a{:href => "/__admin/import"} Import

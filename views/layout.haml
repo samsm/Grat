@@ -4,16 +4,17 @@
   %head
     %title Grat
     %link{:rel=>"shortcut icon", :href=>"/gratfiles/favicon.ico"}
-    
+
     %script{:type=>"text/javascript", :src=>"/gratfiles/jquery-combined.min.js"}
     %script{:type=>"text/javascript", :src=>"/gratfiles/application.js"}
-    
+
     %script{:type=>"text/javascript", :src=>"/gratfiles/js-beautifier.min.js"}
-    
-    %link{:rel => 'stylesheet', :type => 'text/css', :media => 'all', :href => '/gratfiles/oocss.min.css'}
-    %link{:rel => 'stylesheet', :type => 'text/css', :media => 'all', :href => '/gratfiles/custom.css'}
+
+    %link{:rel => 'stylesheet', :type => 'text/css', :media => 'all', :href => '/gratfiles/reset.css'}
+    %link{:rel => 'stylesheet', :type => 'text/css', :media => 'all', :href => '/gratfiles/custom2.css'}
 
   %body
-    = yield
+    .container
+      = yield
     /
       .debug= params.inspect

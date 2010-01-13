@@ -95,10 +95,6 @@ a.collapse {
   padding: 1em;
 }
 
-.pages li {
-  margin: 1em;
-}
-
 .pages a.emptycontent {
  color: #b6ff48;
 }
@@ -114,11 +110,19 @@ a.collapse {
 .pages li {
   margin: 0;
   margin-bottom: 0.5em;
+  padding-left: 1em;
+  border-top: solid 1px rgba(250,250,250,.3);
 }
 .pages ol {
+  padding:  0;
   padding-top: 0.25em;
   padding-bottom: 0;
-  padding-left: 0.5em;
+  padding-left: 0;
+}
+
+.tags, .template, .created {
+  margin-left: 2em;
+  float: right;
 }
 
 

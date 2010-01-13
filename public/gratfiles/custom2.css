@@ -1,0 +1,68 @@
+/* @override http://localhost:9393/gratfiles/custom2.css */
+
+/*
+rgba(181,39,69,1)   // red
+rgba(127,219,177,1) // bright sea green?
+rgba(134,178,142,1) // mellow green
+rgba(161,139,69,1)  // mellow brown
+rgba(189,39,69,1)   // orange red
+
+rgba(255,255,255,1) // white
+rgba(0,0,0,1)       // black
+*/
+body {
+	font: normal 62.5% helvetica, arial, sans-serif;
+	background-color: rgba(134,178,142,1);
+	color: rgba(0,0,0,.8);
+	}
+
+.container {
+	margin-left: 10em;
+	}
+
+.mod:after { 
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden; 
+	}
+
+
+h1 {
+	font-size: 4em;
+	color: rgba(127,219,177,1);
+	text-shadow: 1px 1px 1px rgba(0,0,0,.4);
+	}
+
+.panel {
+	width: 96em;
+	background-color: rgba(255,255,255,1);
+	padding: 1em;
+	-webkit-box-shadow: 0 1px 10px rgba(189,39,69,.2);
+    -moz-box-shadow: 0 1px 10px rgba(0,0,0,.2);
+    box-shadow: 0 1px 10px rgba(0,0,0,.2);
+    
+    border: solid 2px rgba(161,139,69,.5);
+    -moz-border-radius: 5px; 
+    -webkit-border-radius: 5px;
+	}
+
+.pages {
+	float: left;
+	width: 66em;
+	}
+.panel h2 {
+	border-bottom: dashed 1px rgba(161,139,69,.5);
+	padding-bottom: .5em;
+	width: 33em;
+	}
+.info {
+	float: right;
+	width: 27.8em;
+	}
+
+.pages li {
+	margin-left: 1em;
+	margin-top: 1em;
+	}

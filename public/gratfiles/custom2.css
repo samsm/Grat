@@ -173,6 +173,47 @@ a.add {
 .ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-state-processing a { cursor: text; }
 .ui-tabs .ui-tabs-hide { display: none !important; }
 
+.tabs ul.mod {
+	height: 1.8em;
+	}
+.tabs li {
+	float:  right;
+	background-color: rgba(46,33,37,1);
+	border: solid 2px rgba(46,33,37,1);
+	margin-right: 1em;
+	padding: 1em;
+	padding-bottom: .5em;
+	border-bottom: 0;
+	-moz-border-radius-topleft: .5em;
+	-webkit-border-top-left-radius: .5em;
+	
+	-moz-border-radius-topright: 1em;
+	-webkit-border-top-right-radius: 1em;
+	/*border-radius: .5em;*/
+	
+	font-size: .65em;
+	
+	-webkit-box-shadow: 0 1px 5px rgba(114,123,127,.5);
+	-moz-box-shadow: 0 1px 5px rgba(114,123,127,.5);
+	box-shadow: 0 1px 5px rgba(114,123,127,.5);
+
+	}
+.tabs li.ui-tabs-selected {
+	background-color: rgba(114,123,127,1);
+	}
+.tabs li a {
+	color: rgba(68,202,204,1);
+	text-decoration: none;
+	}
+#basics, #data, #history {
+	border-top: solid 2px;
+	border-left: dotted 1px rgba(46,33,37,.5);
+	border-right: dotted 1px rgba(46,33,37,.5);
+	background-color: rgba(114,123,127,1);
+	padding: 1em;
+	padding-top: 0;
+	}
+
 
 
 

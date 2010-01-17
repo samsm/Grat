@@ -3,7 +3,7 @@
 /*
 rgba(114,123,127,1) // medium grey
 rgba(204,234,234,1) // very light blue
-rgba(114,123,127,1)  // medium brown
+rgba(122,117,86,1)  // medium brown
 rgba(46,33,37,1)    // dark brown
 rgba(68,202,204,1)  // bright blue
 
@@ -59,6 +59,7 @@ body {
 	width: 30em;
 	background-color: rgba(255,255,255,1);
 	padding: 1em;
+	padding-top: 2em;
 	float:  left;
 	
 	border-right: 2px solid rgba(114,123,127,1);
@@ -72,6 +73,11 @@ body {
 	/* Make column go to bottom of screen */
 	margin-bottom: -1000px;
 	padding-bottom: 1000px;
+	}
+.panel h2 {
+	font-size: 2em;
+	color: rgba(46,33,37,1);
+	text-shadow: 2px 2px 2px rgba(114,123,127,.4);
 	}
 
 .pages {
@@ -151,7 +157,21 @@ a.collapse {
 }
 
 a.add {
-	color: inherit;
+	color: rgba(68,202,204,1);
+	padding: .5em;
+	-moz-border-radius: 1em;
+	-webkit-border-radius: 1em;
+	border-radius: 1em;
+	
+	background-color: rgba(46,33,37,1);
+	text-decoration: none;
+	
+	-webkit-box-shadow: 0 1px 5px rgba(122,117,86,.5);
+	-moz-box-shadow: 0 1px 5px rgba(122,117,86,.5);
+	box-shadow: 0 1px 5px rgba(122,117,86,.5);	
+	}
+#new_fields p {
+	margin-top: 1em;
 	}
 .expander {
 	display: none;
@@ -160,13 +180,16 @@ a.add {
 .collapser {
 	float: right;
 	margin-top: -1.5em;
+	margin-right: 1em;
 	}
 .activeCollapse .expander {
 	display: inline;
 	}
 .expander, .collapser {
-	font-size: .5em;
+	font-size: .65em;
 	font-weight: normal;
+	color: rgba(68,202,204,1);
+	text-decoration: none;
 	}
 
 /* JQuery UI Tabs tweaks */
@@ -180,26 +203,29 @@ a.add {
 	float:  right;
 	background-color: rgba(46,33,37,1);
 	border: solid 2px rgba(46,33,37,1);
-	margin-right: 1em;
+	margin-right: .5em;
 	padding: 1em;
 	padding-bottom: .5em;
-	border-bottom: 0;
-	-moz-border-radius-topleft: .5em;
-	-webkit-border-top-left-radius: .5em;
 	
-	-moz-border-radius-topright: 1em;
-	-webkit-border-top-right-radius: 1em;
+	border-bottom: 0;
+	-moz-border-radius-topleft: 1.5em;
+	-webkit-border-top-left-radius: 1.5em;
+	
+	-moz-border-radius-topright: .5em;
+	-webkit-border-top-right-radius: .5em;
 	/*border-radius: .5em;*/
 	
 	font-size: .65em;
 	
-	-webkit-box-shadow: 0 1px 5px rgba(114,123,127,.5);
+	
+	/*-webkit-box-shadow: 0 1px 5px rgba(114,123,127,.5);
 	-moz-box-shadow: 0 1px 5px rgba(114,123,127,.5);
-	box-shadow: 0 1px 5px rgba(114,123,127,.5);
-
+	box-shadow: 0 1px 5px rgba(114,123,127,.5);*/
+	/*letter-spacing: 0em;*/
 	}
 .tabs li.ui-tabs-selected {
-	background-color: rgba(114,123,127,1);
+	background-color: rgba(122,117,86,1);
+	border-bottom: solid 3px rgba(122,117,86,1);
 	}
 .tabs li a {
 	color: rgba(68,202,204,1);
@@ -209,9 +235,8 @@ a.add {
 	border-top: solid 2px;
 	border-left: dotted 1px rgba(46,33,37,.5);
 	border-right: dotted 1px rgba(46,33,37,.5);
-	background-color: rgba(114,123,127,1);
+	background-color: rgba(122,117,86,1);
 	padding: 1em;
-	padding-top: 0;
 	}
 
 

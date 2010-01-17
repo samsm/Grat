@@ -8,6 +8,7 @@
       %li
         %a{:href => '#history'} History
     #basics
+      %p Edit your page. :)
       .template
         %label{:for => form_nest('template_url')} Template
         %select{:name => form_nest('template_url')}
@@ -38,12 +39,12 @@
       #new_fields
         %p
           %a.add{:href=>'#new_field'} Add a New Field
+      .defaults.collapsable
+        %label{:for => form_nest('default_content_vars')} Default Content
+        %textarea{:id => 'default_content_vars', :name => form_nest('default_content_vars')}=content.default_content_vars.to_json
     #history
       %p This isn't implemented yet, sorry!
 
   .submit
     %input{:name => form_nest('submit'), :type => 'submit', :value => "Save and continue editing"}
     %input{:name => form_nest('submit'), :type => 'submit', :value => "Save and make a new doc"}
-  .defaults.collapsable.collapsed
-    %label{:for => form_nest('default_content_vars')} Default Content
-    %textarea{:id => 'default_content_vars', :name => form_nest('default_content_vars')}= content.default_content_vars.to_json

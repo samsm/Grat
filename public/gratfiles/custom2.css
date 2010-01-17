@@ -169,7 +169,9 @@ a.add {
 	font-weight: normal;
 	}
 
-
+/* JQuery UI Tabs tweaks */
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-state-processing a { cursor: text; }
+.ui-tabs .ui-tabs-hide { display: none !important; }
 
 
 

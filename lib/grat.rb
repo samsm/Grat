@@ -20,7 +20,7 @@ class Grat::Application < Sinatra::Base
   end
 
   get '/__admin/' do
-    @pages = model.all
+    pages
     @templates = templates
     haml :list
   end
@@ -77,6 +77,7 @@ class Grat::Application < Sinatra::Base
   end
 
   get '/__admin/edit/*' do
+    @page_heading_text = "Editing: <a href='#{url}'>#{url}</a>"
     haml :content_form
   end
 
@@ -230,16 +231,23 @@ class Grat::Application < Sinatra::Base
 
     # only works if there's a url '/'
     def nested_root
-      pages = @pages.sort_by {|p| p.url }
-      first = pages.first
-      peel(pages, first)
+      sorted_pages = pages.sort_by {|p| p.url }
+      first = sorted_pages.first
+      peel(sorted_pages, first)
       first
+    end
+
+    def pages
+      @pages ||= model.all
     end
 
     def nested_root_list
       to_list([nested_root])
     end
 
+    def page_heading_text
+      @page_heading_text or 'Unnamed page.'
+    end
   end
 
 end

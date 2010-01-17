@@ -1,18 +1,3 @@
-.grat_greet
-  %p
-    - if content.new_record?
-      Let's make some
-      %strong= url
-      content!
-    - else
-      Editing
-      %a{:href => url}
-        %strong= url
-      content.
-    (or go to the
-    %a{:href => '/__admin/'} page list
-    )
-
 %form{:action => "#{content.url}", :method => 'post'}
   .template
     %label{:for => form_nest('template_url')} Template
@@ -45,8 +30,8 @@
       %a.add{:href=>'#new_field'} Add a New Field
 
   .submit
-    %input{:name => form_nest('submit'), :type => 'submit', :value => "Let's save this thing"}
-    %input{:name => form_nest('submit'), :type => 'submit', :value => "Save and make another"}
+    %input{:name => form_nest('submit'), :type => 'submit', :value => "Save and continue editing"}
+    %input{:name => form_nest('submit'), :type => 'submit', :value => "Save and make a new doc"}
   .defaults.collapsable.collapsed
     %label{:for => form_nest('default_content_vars')} Default Content
     %textarea{:id => 'default_content_vars', :name => form_nest('default_content_vars')}= content.default_content_vars.to_json

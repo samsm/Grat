@@ -1,23 +1,24 @@
 /* @override http://localhost:9393/gratfiles/custom2.css */
 
 /*
-rgba(181,39,69,1)   // red
-rgba(127,219,177,1) // bright sea green?
-rgba(134,178,142,1) // mellow green
-rgba(161,139,69,1)  // mellow brown
-rgba(189,39,69,1)   // orange red
+rgba(114,123,127,1) // medium grey
+rgba(204,234,234,1) // very light blue
+rgba(114,123,127,1)  // medium brown
+rgba(46,33,37,1)    // dark brown
+rgba(68,202,204,1)  // bright blue
+
 
 rgba(255,255,255,1) // white
 rgba(0,0,0,1)       // black
 */
 body {
 	font: normal 62.5% helvetica, arial, sans-serif;
-	background-color: rgba(134,178,142,1);
+	background-color: rgba(204,234,234,1);
 	color: rgba(0,0,0,.8);
 	}
 
 .container {
-	margin-left: 10em;
+	/*margin-left: 10em;*/
 	}
 
 .mod:after { 
@@ -29,40 +30,147 @@ body {
 	}
 
 
-h1 {
+.masthead {
+	background-color: rgba(46,33,37,1);
+	padding: 1em;
+	height: 4em;
+	}
+
+.masthead h1, .masthead h2 {
+	text-shadow: 1px 1px 1px rgba(68,202,204,.4);
+	color: rgba(204,234,234,1);
+	}
+
+.masthead h1 {
 	font-size: 4em;
-	color: rgba(127,219,177,1);
-	text-shadow: 1px 1px 1px rgba(0,0,0,.4);
+	float: left;
+	}
+.masthead h2 {
+	margin-top: 1em;
+	font-size: 2em;
+	float: right;
+	}
+.masthead h2 a {
+	color:  inherit;
 	}
 
 .panel {
-	width: 96em;
+	margin: 0 auto;
+	width: 30em;
 	background-color: rgba(255,255,255,1);
 	padding: 1em;
-	-webkit-box-shadow: 0 1px 10px rgba(189,39,69,.2);
-    -moz-box-shadow: 0 1px 10px rgba(0,0,0,.2);
-    box-shadow: 0 1px 10px rgba(0,0,0,.2);
-    
-    border: solid 2px rgba(161,139,69,.5);
-    -moz-border-radius: 5px; 
-    -webkit-border-radius: 5px;
+	float:  left;
+	
+	border-right: 2px solid rgba(114,123,127,1);
+	margin-bottom: 2em;
+	-webkit-box-shadow: 0 1px 5px rgba(114,123,127,.5);
+	-moz-box-shadow: 0 1px 5px rgba(114,123,127,.5);
+	box-shadow: 0 1px 5px rgba(114,123,127,.5);
+
+	margin-right: 2.2em;
+	
+	/* Make column go to bottom of screen */
+	margin-bottom: -1000px;
+	padding-bottom: 1000px;
 	}
 
 .pages {
 	float: left;
-	width: 66em;
 	}
-.panel h2 {
-	border-bottom: dashed 1px rgba(161,139,69,.5);
-	padding-bottom: .5em;
-	width: 33em;
-	}
-.info {
-	float: right;
-	width: 27.8em;
-	}
-
 .pages li {
 	margin-left: 1em;
 	margin-top: 1em;
 	}
+	
+/* form stuffs */
+.container {
+	margin-top: 1em;
+	margin-left: 17em;
+	width: 40em;
+	font-size: 2em;
+	}
+
+input, textarea, label, .sameaslabel {
+	display: block;
+	width: 99%;
+	}
+
+.sameaslabel, label {
+	margin-top: .5em;
+	}
+
+textarea {
+	font-family: "Courier New", Courier, mono;
+	font-weight: bold;
+	height: 13em;
+}
+.sameaslabel {
+	padding-left: 0; // no padding like p has
+	}
+
+.submit input {
+	width: auto;
+	}
+
+
+p.editing {
+  min-height: 1em;
+  background-color: yellow;
+}
+
+input[type=file] {
+  padding-top: .5em;
+  font-size: 1.5em;
+}
+
+input[type=radio] {
+  width: 1em;
+  float: left;
+  margin-top: .25em;
+}
+
+input {
+	width: 33%;
+	}
+input[type=submit] {
+	width: auto;
+	display: inline;
+	}
+	
+a.collapse {
+  font-size: .5em;
+  font-weight: normal;
+}
+
+.activeCollapse textarea {
+  display: none;
+}
+
+.activeCollapse .collapser {
+  display:none;
+}
+
+a.add {
+	color: inherit;
+	}
+.expander {
+	display: none;
+	float: left;
+	}
+.collapser {
+	float: right;
+	margin-top: -1.5em;
+	}
+.activeCollapse .expander {
+	display: inline;
+	}
+.expander, .collapser {
+	font-size: .5em;
+	font-weight: normal;
+	}
+
+
+
+
+
+

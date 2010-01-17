@@ -14,6 +14,13 @@
     %link{:rel => 'stylesheet', :type => 'text/css', :media => 'all', :href => '/gratfiles/custom2.css'}
 
   %body
+    .masthead
+      %h1 Grat
+      %h2= page_heading_text
+    .panel.mod
+      %h2 Pages
+      .pages
+        = haml :page_list, :locals => {:pages => [nested_root]}, :layout => false
     .container
       = yield
     /

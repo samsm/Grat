@@ -118,4 +118,21 @@ class Grat::Content
   def suggested_fields
     @suggested_fields or []
   end
+
+  def children
+    @children ||= []
+  end
+
+end
+
+class Grat::EmptyContent
+  attr_accessor :url
+  def initialize(url)
+    self.url = url
+  end
+
+  def children
+    @children ||= []
+  end
+
 end

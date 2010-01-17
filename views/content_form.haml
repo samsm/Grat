@@ -1,50 +1,50 @@
-.grat_greet
-  - if content.new_record?
-    %p
-      Let's make some
-      %strong= url
-      content!
-  - else
-    %p
-      Editing
-      %a{:href => url}
-        %strong= url
-      content.
-    
 %form{:action => "#{content.url}", :method => 'post'}
-  .template
-    %label{:for => form_nest('template_url')} Template
-    %select{:name => form_nest('template_url')}
-      %option{:value=>''} None
-      - templates.each do |template|
-        - option_hash = {:value => template.url}
-        - option_hash.merge!(:selected => 'selected') if template.url == content.template_url
-        %option{option_hash}= template.url
-  .url
-    %label{:for => form_nest('url')} Url
-    %input{:name => form_nest('url'), :value => content.url}
-  .content.collapsable
-    %label{:for => form_nest('content')} Content
-    %textarea{:name => form_nest('content')}= content.content
-  .tags
-    %label{:for => form_nest('tags')} Tags
-    %input{:name => form_nest('tags'), :value => content.tags.join(' ')}
-  - content.editable_fields.each_pair do |k,v|
-    %div{:class => k}
-      %label{:for => form_nest(k)}= k.capitalize
-      %input{:name => form_nest(k), :value => v}
-  #suggested_fields
-    - content.suggested_fields.each do |field|
-      %div{:class => field}
-        %label{:for => form_nest(field)}= field.capitalize
-        %input{:name => form_nest(field)}
-  #new_fields
-    %p
-      %a.add{:href=>'#new_field'} Add a New Field
-    
+  .tabs
+    %ul.mod
+      %li
+        %a{:href => '#basics'} Basics
+      %li
+        %a{:href => '#data'} Data
+      %li
+        %a{:href => '#history'} History
+    #basics
+      %p Edit your page. :)
+      .template
+        %label{:for => form_nest('template_url')} Template
+        %select{:name => form_nest('template_url')}
+          %option{:value=>''} None
+          - templates.each do |template|
+            - option_hash = {:value => template.url}
+            - option_hash.merge!(:selected => 'selected') if template.url == content.template_url
+            %option{option_hash}= template.url
+      .url
+        %label{:for => form_nest('url')} Url
+        %input{:name => form_nest('url'), :value => content.url}
+      .content.collapsable
+        %label{:for => form_nest('content')} Content
+        %textarea{:name => form_nest('content')}= content.content
+      .tags
+        %label{:for => form_nest('tags')} Tags
+        %input{:name => form_nest('tags'), :value => content.tags.join(' ')}
+    #data
+      - content.editable_fields.each_pair do |k,v|
+        %div{:class => k}
+          %label{:for => form_nest(k)}= k.capitalize
+          %input{:name => form_nest(k), :value => v}
+      #suggested_fields
+        - content.suggested_fields.each do |field|
+          %div{:class => field}
+            %label{:for => form_nest(field)}= field.capitalize
+            %input{:name => form_nest(field)}
+      #new_fields
+        %p
+          %a.add{:href=>'#new_field'} Add a New Field
+      .defaults.collapsable
+        %label{:for => form_nest('default_content_vars')} Default Content
+        %textarea{:id => 'default_content_vars', :name => form_nest('default_content_vars')}=content.default_content_vars.to_json
+    #history
+      %p This isn't implemented yet, sorry!
+
   .submit
-    %input{:name => form_nest('submit'), :type => 'submit', :value => "Let's save this thing"}
-    %input{:name => form_nest('submit'), :type => 'submit', :value => "Save and make another"}
-  .defaults.collapsable.collapsed
-    %label{:for => form_nest('default_content_vars')} Default Content
-    %textarea{:id => 'default_content_vars', :name => form_nest('default_content_vars')}= content.default_content_vars.to_json
+    %input{:name => form_nest('submit'), :type => 'submit', :value => "Save and continue editing"}
+    %input{:name => form_nest('submit'), :type => 'submit', :value => "Save and make a new doc"}

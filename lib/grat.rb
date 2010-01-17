@@ -19,8 +19,8 @@ class Grat::Application < Sinatra::Base
     file_data
   end
 
-  get '/__admin/all' do
-    @pages = model.all
+  get '/__admin/' do
+    pages
     @templates = templates
     haml :list
   end
@@ -39,7 +39,7 @@ class Grat::Application < Sinatra::Base
   post '/__admin/import' do
     json_text = file_import_text || params[:import][:text]
     @import_results = import(json_text, params[:import][:strategy])
-    redirect '/__admin/all'
+    redirect '/__admin/'
   end
 
   # Rather inefficient at present.
@@ -77,6 +77,7 @@ class Grat::Application < Sinatra::Base
   end
 
   get '/__admin/edit/*' do
+    @page_heading_text = "Editing: <a href='#{url}'>#{url}</a>"
     haml :content_form
   end
 
@@ -184,6 +185,68 @@ class Grat::Application < Sinatra::Base
   helpers do
     def form_nest(name)
       "content[#{name}]"
+    end
+
+    # The next few methods build the tree for the file list
+    # This can likely be greatly simpified and more efficient.
+    def peel(pages, start)
+      pages.each do |page|
+        if under?(start,page)
+          if immediate_child?(start,page)
+            start.children << page
+          else
+            # Skip if already done
+            unless start.children.detect {|ec| ec.url == next_dir(start,page) }
+              ec = Grat::EmptyContent.new(next_dir(start,page))
+              peel(pages,ec)
+              unless start.children.detect {|c| c.url == ec.url }
+                start.children << ec
+              end
+            end
+          end
+        end
+      end
+    end
+
+    def under?(start,other)
+      other.url.index(start.url) == 0 && other.url != start.url
+    end
+
+    def next_dir(start,other)
+      other.url.match(/#{start.url}?[^\/]+\//)[0]
+    end
+
+    def immediate_child?(start,other)
+      !url_difference(start,other).index('/')
+    end
+
+    def url_difference(start,other)
+      other.url.sub(/#{start.url}/, '')
+    end
+
+    def recursive_url_list(page)
+      puts page.url
+      page.children.each { |c| recursive_url_list(c) }
+    end
+
+    # only works if there's a url '/'
+    def nested_root
+      sorted_pages = pages.sort_by {|p| p.url }
+      first = sorted_pages.first
+      peel(sorted_pages, first)
+      first
+    end
+
+    def pages
+      @pages ||= model.all
+    end
+
+    def nested_root_list
+      to_list([nested_root])
+    end
+
+    def page_heading_text
+      @page_heading_text or 'Unnamed page.'
     end
   end
 

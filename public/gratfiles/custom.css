@@ -1,4 +1,4 @@
-/* @override
+/* @override 
 	http://localhost:9393/custom.css
 	http://grat.local/css/custom.css
 	http://localhost:9393/gratfiles/custom.css
@@ -81,3 +81,60 @@ a.collapse {
 .expander, .collapser {
   margin-left: 1em;
 }
+
+.pages {
+  background-color: #573515;
+  color: whitesmoke;
+  border-bottom: solid black;
+  -webkit-box-shadow: 0 1px 10px rgba(0,0,0,.1);
+  -moz-box-shadow: 0 1px 10px rgba(0,0,0,.1);
+  box-shadow: 0 1px 10px rgba(0,0,0,.1);
+  font-weight: normal;
+  font-style: normal;
+  font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
+  padding: 1em;
+}
+
+.pages a.emptycontent {
+ color: #b6ff48;
+}
+.pages .missing_message {
+  font-size: .75em;
+  visibility: hidden;
+}
+
+.pages a {
+  color: white;
+}
+
+.pages li {
+  margin: 0;
+  margin-bottom: 0.5em;
+  padding-left: 1em;
+  border-top: solid 1px rgba(250,250,250,.3);
+}
+.pages ol {
+  padding:  0;
+  padding-top: 0.25em;
+  padding-bottom: 0;
+  padding-left: 0;
+}
+
+.tags, .template, .created {
+  margin-left: 2em;
+  float: right;
+}
+
+
+/*.pages ol:before {
+  content:  "collapse";
+}*/
+
+
+
+/*.pages li:nth-child(odd) {
+	background-color: #86B486;
+}
+.pages li:nth-child(even) {
+	background-color: red;
+}*/

@@ -1,0 +1,244 @@
+/* @override http://localhost:9393/gratfiles/custom2.css */
+
+/*
+rgba(114,123,127,1) // medium grey
+rgba(204,234,234,1) // very light blue
+rgba(122,117,86,1)  // medium brown
+rgba(46,33,37,1)    // dark brown
+rgba(68,202,204,1)  // bright blue
+
+
+rgba(255,255,255,1) // white
+rgba(0,0,0,1)       // black
+*/
+body {
+	font: normal 62.5% helvetica, arial, sans-serif;
+	background-color: rgba(204,234,234,1);
+	color: rgba(0,0,0,.8);
+	}
+
+.container {
+	/*margin-left: 10em;*/
+	}
+
+.mod:after { 
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden; 
+	}
+
+
+.masthead {
+	background-color: rgba(46,33,37,1);
+	padding: 1em;
+	height: 4em;
+	}
+
+.masthead h1, .masthead h2 {
+	text-shadow: 1px 1px 1px rgba(68,202,204,.4);
+	color: rgba(204,234,234,1);
+	}
+
+.masthead h1 {
+	font-size: 4em;
+	float: left;
+	}
+.masthead h2 {
+	margin-top: 1em;
+	font-size: 2em;
+	float: right;
+	}
+.masthead h2 a {
+	color:  inherit;
+	}
+
+.panel {
+	margin: 0 auto;
+	width: 30em;
+	background-color: rgba(255,255,255,1);
+	padding: 1em;
+	padding-top: 2em;
+	float:  left;
+	
+	border-right: 2px solid rgba(114,123,127,1);
+	margin-bottom: 2em;
+	-webkit-box-shadow: 0 1px 5px rgba(114,123,127,.5);
+	-moz-box-shadow: 0 1px 5px rgba(114,123,127,.5);
+	box-shadow: 0 1px 5px rgba(114,123,127,.5);
+
+	margin-right: 2.2em;
+	
+	/* Make column go to bottom of screen */
+	margin-bottom: -1000px;
+	padding-bottom: 1000px;
+	}
+.panel h2 {
+	font-size: 2em;
+	color: rgba(46,33,37,1);
+	text-shadow: 2px 2px 2px rgba(114,123,127,.4);
+	}
+
+.pages {
+	float: left;
+	}
+.pages li {
+	margin-left: 1em;
+	margin-top: 1em;
+	}
+	
+/* form stuffs */
+.container {
+	margin-top: 1em;
+	margin-left: 17em;
+	width: 40em;
+	font-size: 2em;
+	}
+
+input, textarea, label, .sameaslabel {
+	display: block;
+	width: 99%;
+	}
+
+.sameaslabel, label {
+	margin-top: .5em;
+	}
+
+textarea {
+	font-family: "Courier New", Courier, mono;
+	font-weight: bold;
+	height: 13em;
+}
+.sameaslabel {
+	padding-left: 0; // no padding like p has
+	}
+
+.submit input {
+	width: auto;
+	}
+
+
+p.editing {
+  min-height: 1em;
+  background-color: yellow;
+}
+
+input[type=file] {
+  padding-top: .5em;
+  font-size: 1.5em;
+}
+
+input[type=radio] {
+  width: 1em;
+  float: left;
+  margin-top: .25em;
+}
+
+input {
+	width: 33%;
+	}
+input[type=submit] {
+	width: auto;
+	display: inline;
+	}
+	
+a.collapse {
+  font-size: .5em;
+  font-weight: normal;
+}
+
+.activeCollapse textarea {
+  display: none;
+}
+
+.activeCollapse .collapser {
+  display:none;
+}
+
+a.add {
+	color: rgba(68,202,204,1);
+	padding: .5em;
+	-moz-border-radius: 1em;
+	-webkit-border-radius: 1em;
+	border-radius: 1em;
+	
+	background-color: rgba(46,33,37,1);
+	text-decoration: none;
+	
+	-webkit-box-shadow: 0 1px 5px rgba(122,117,86,.5);
+	-moz-box-shadow: 0 1px 5px rgba(122,117,86,.5);
+	box-shadow: 0 1px 5px rgba(122,117,86,.5);	
+	}
+#new_fields p {
+	margin-top: 1em;
+	}
+.expander {
+	display: none;
+	float: left;
+	}
+.collapser {
+	float: right;
+	margin-top: -1.5em;
+	margin-right: 1em;
+	}
+.activeCollapse .expander {
+	display: inline;
+	}
+.expander, .collapser {
+	font-size: .65em;
+	font-weight: normal;
+	color: rgba(68,202,204,1);
+	text-decoration: none;
+	}
+
+/* JQuery UI Tabs tweaks */
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-state-processing a { cursor: text; }
+.ui-tabs .ui-tabs-hide { display: none !important; }
+
+.tabs ul.mod {
+	height: 1.8em;
+	}
+.tabs li {
+	float:  right;
+	background-color: rgba(46,33,37,1);
+	border: solid 2px rgba(46,33,37,1);
+	margin-right: .5em;
+	padding: 1em;
+	padding-bottom: .5em;
+	
+	border-bottom: 0;
+	-moz-border-radius-topleft: 1.5em;
+	-webkit-border-top-left-radius: 1.5em;
+	
+	-moz-border-radius-topright: .5em;
+	-webkit-border-top-right-radius: .5em;
+	/*border-radius: .5em;*/
+	
+	font-size: .65em;
+	
+	
+	/*-webkit-box-shadow: 0 1px 5px rgba(114,123,127,.5);
+	-moz-box-shadow: 0 1px 5px rgba(114,123,127,.5);
+	box-shadow: 0 1px 5px rgba(114,123,127,.5);*/
+	/*letter-spacing: 0em;*/
+	}
+.tabs li.ui-tabs-selected {
+	background-color: rgba(122,117,86,1);
+	border-bottom: solid 3px rgba(122,117,86,1);
+	}
+.tabs li a {
+	color: rgba(68,202,204,1);
+	text-decoration: none;
+	}
+#basics, #data, #history {
+	border-top: solid 2px;
+	border-left: dotted 1px rgba(46,33,37,.5);
+	border-right: dotted 1px rgba(46,33,37,.5);
+	background-color: rgba(122,117,86,1);
+	padding: 1em;
+	}
+
+
+
+

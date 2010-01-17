@@ -1,7 +1,10 @@
-.grat_greet
-  %p Great. Here's everything. Hope you're happy.
-%h2 Make a new page
+%ul
+  %li
+    %a{:href => "/__admin/import"} Import
+  %li
+    %a{:href => "/__admin/export"} Export
 .new_page
+  %h2 Make a new page
   %form{:action => "/__admin/new"}
     %input{:name => 'url'}
     %input{:name => "submit", :value=>'New Page', :type => 'submit'}
@@ -14,10 +17,16 @@
       %a{:href => edit_path(page.url)} edit
       )
 %h2 Templates
-%ol
-  - @templates.each do |template|
-    %li
-      %a{:href => template.url}= template.url
-      (
-      %a{:href => edit_path(template.url)} edit
-      )
+- if @templates.any?
+  %ol
+    - @templates.each do |template|
+      %li
+        %a{:href => template.url}= template.url
+        (
+        %a{:href => edit_path(template.url)} edit
+        )
+- else
+  %p
+    Templates are ordinary pages with the tag
+    %strong template
+    \.

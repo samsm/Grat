@@ -1,5 +1,4 @@
-.grat_greet
-  %p Hey, import some json if you like.
+%h1 Import
 %form{:action => "/__admin/import", :method => 'post', :enctype=>'multipart/form-data' }
   .import_file
     %label{:for => 'import_file'} Upload a json file:
@@ -21,4 +20,3 @@
       %input{:type=> 'radio', :id => 'import_demolish', :value => 'demolish', :name => 'import[strategy]'}
   .submit
     %input{:name => 'import[submit]', :type => 'submit', :value => "Let's save this thing"}
-    

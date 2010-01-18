@@ -38,7 +38,7 @@
             %input{:name => form_nest(field)}
       #new_fields
         %p
-          %a.add{:href=>'#new_field'} Add a New Field
+          %a.add.button{:href=>'#new_field'} Add a New Field
       .defaults.collapsable
         %label{:for => form_nest('default_content_vars')} Default Content
         %textarea{:id => 'default_content_vars', :name => form_nest('default_content_vars')}=content.default_content_vars.to_json

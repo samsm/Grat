@@ -1,21 +1,13 @@
-%ul
+%ul.bulk-options
   %li
-    %a{:href => "/__admin/import"} Import
+    %a.button{:href => "/__admin/import"} Import
   %li
-    %a{:href => "/__admin/export"} Export
+    %a.button{:href => "/__admin/export"} Export
 .new_page
   %h2 Make a new page
   %form{:action => "/__admin/new"}
     %input{:name => 'url'}
     %input{:name => "submit", :value=>'New Page', :type => 'submit'}
-%h2 Pages
-%ol
-  - @pages.each do |page|
-    %li
-      %a{:href => page.url}= page.url
-      (
-      %a{:href => edit_path(page.url)} edit
-      )
 %h2 Templates
 - if @templates.any?
   %ol

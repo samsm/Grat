@@ -21,12 +21,12 @@ body {
 	/*margin-left: 10em;*/
 	}
 
-.mod:after { 
+.mod:after {
 	content: ".";
 	display: block;
 	height: 0;
 	clear: both;
-	visibility: hidden; 
+	visibility: hidden;
 	}
 
 
@@ -50,9 +50,12 @@ body {
 	font-size: 2em;
 	float: right;
 	}
-.masthead h2 a {
+.masthead h2 a, .masthead h1 a {
 	color:  inherit;
 	}
+.masthead h1 a {
+  text-decoration: none;
+  }
 
 .panel {
 	margin: 0 auto;
@@ -61,7 +64,7 @@ body {
 	padding: 1em;
 	padding-top: 2em;
 	float:  left;
-	
+
 	border-right: 2px solid rgba(114,123,127,1);
 	margin-bottom: 2em;
 	-webkit-box-shadow: 0 1px 5px rgba(114,123,127,.5);
@@ -69,7 +72,7 @@ body {
 	box-shadow: 0 1px 5px rgba(114,123,127,.5);
 
 	margin-right: 2.2em;
-	
+
 	/* Make column go to bottom of screen */
 	margin-bottom: -1000px;
 	padding-bottom: 1000px;
@@ -87,7 +90,7 @@ body {
 	margin-left: 1em;
 	margin-top: 1em;
 	}
-	
+
 /* form stuffs */
 .container {
 	margin-top: 1em;
@@ -142,7 +145,7 @@ input[type=submit] {
 	width: auto;
 	display: inline;
 	}
-	
+
 a.collapse {
   font-size: .5em;
   font-weight: normal;
@@ -156,19 +159,19 @@ a.collapse {
   display:none;
 }
 
-a.add {
+a.button {
 	color: rgba(68,202,204,1);
 	padding: .5em;
 	-moz-border-radius: 1em;
 	-webkit-border-radius: 1em;
 	border-radius: 1em;
-	
+
 	background-color: rgba(46,33,37,1);
 	text-decoration: none;
-	
+
 	-webkit-box-shadow: 0 1px 5px rgba(122,117,86,.5);
 	-moz-box-shadow: 0 1px 5px rgba(122,117,86,.5);
-	box-shadow: 0 1px 5px rgba(122,117,86,.5);	
+	box-shadow: 0 1px 5px rgba(122,117,86,.5);
 	}
 #new_fields p {
 	margin-top: 1em;
@@ -206,18 +209,18 @@ a.add {
 	margin-right: .5em;
 	padding: 1em;
 	padding-bottom: .5em;
-	
+
 	border-bottom: 0;
 	-moz-border-radius-topleft: 1.5em;
 	-webkit-border-top-left-radius: 1.5em;
-	
+
 	-moz-border-radius-topright: .5em;
 	-webkit-border-top-right-radius: .5em;
 	/*border-radius: .5em;*/
-	
+
 	font-size: .65em;
-	
-	
+
+
 	/*-webkit-box-shadow: 0 1px 5px rgba(114,123,127,.5);
 	-moz-box-shadow: 0 1px 5px rgba(114,123,127,.5);
 	box-shadow: 0 1px 5px rgba(114,123,127,.5);*/
@@ -238,6 +241,39 @@ a.add {
 	background-color: rgba(122,117,86,1);
 	padding: 1em;
 	}
+
+/* Radio buttons on import */
+.import_replace_or_add input {
+	float: left;
+	margin-top: .5em;
+	display: inline;
+	}
+.import_replace_or_add label {
+	margin-left: .5em;
+	display: inline;
+	}
+.import_replace_or_add div {
+	margin-top: .5em;
+	}
+
+.bulk-options li {
+	margin-bottom: 2em;
+	}
+.new_page {
+	margin-bottom: .5em;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

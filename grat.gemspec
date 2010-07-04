@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{grat}
-  s.version = "0.3.1"
+  s.version = "0.4.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Sam Schenkman-Moore"]
-  s.date = %q{2010-01-12}
+  s.date = %q{2010-01-17}
   s.description = %q{Basic interface for making webpages with Haml and Erb. Supports nested templates.}
   s.email = %q{samsm@samsm.com}
   s.extra_rdoc_files = [
@@ -38,6 +38,7 @@ Gem::Specification.new do |s|
      "lib/grat/system.rb",
      "public/gratfiles/application.js",
      "public/gratfiles/custom.css",
+     "public/gratfiles/custom2.css",
      "public/gratfiles/einars-js-beautify/HTML-Beautify.js",
      "public/gratfiles/einars-js-beautify/beautify-cl.js",
      "public/gratfiles/einars-js-beautify/beautify-tests.js",
@@ -52,7 +53,22 @@ Gem::Specification.new do |s|
      "public/gratfiles/einars-js-beautify/unmaintained/opera-userscript/make_opera_userscript.sh",
      "public/gratfiles/einars-js-beautify/unmaintained/opera-userscript/opera_userscript.js",
      "public/gratfiles/favicon.ico",
+     "public/gratfiles/images/ui-bg_diagonals-thick_18_b81900_40x40.png",
+     "public/gratfiles/images/ui-bg_diagonals-thick_20_666666_40x40.png",
+     "public/gratfiles/images/ui-bg_flat_10_000000_40x100.png",
+     "public/gratfiles/images/ui-bg_glass_100_f6f6f6_1x400.png",
+     "public/gratfiles/images/ui-bg_glass_100_fdf5ce_1x400.png",
+     "public/gratfiles/images/ui-bg_glass_65_ffffff_1x400.png",
+     "public/gratfiles/images/ui-bg_gloss-wave_35_f6a828_500x100.png",
+     "public/gratfiles/images/ui-bg_highlight-soft_100_eeeeee_1x100.png",
+     "public/gratfiles/images/ui-bg_highlight-soft_75_ffe45c_1x100.png",
+     "public/gratfiles/images/ui-icons_222222_256x240.png",
+     "public/gratfiles/images/ui-icons_228ef1_256x240.png",
+     "public/gratfiles/images/ui-icons_ef8c08_256x240.png",
+     "public/gratfiles/images/ui-icons_ffd27a_256x240.png",
+     "public/gratfiles/images/ui-icons_ffffff_256x240.png",
      "public/gratfiles/jquery-combined.min.js",
+     "public/gratfiles/jquery-ui.css",
      "public/gratfiles/js-beautifier.min.js",
      "public/gratfiles/oocss.min.css",
      "public/gratfiles/oocss/content.css",
@@ -66,6 +82,7 @@ Gem::Specification.new do |s|
      "public/gratfiles/oocss/talk_skins.css",
      "public/gratfiles/oocss/template.css",
      "public/gratfiles/oocss/template_debug.css",
+     "public/gratfiles/reset.css",
      "views/content_form.haml",
      "views/css/_content.sass",
      "views/css/_custom.sass",
@@ -81,7 +98,8 @@ Gem::Specification.new do |s|
      "views/import_form.haml",
      "views/layout.haml",
      "views/list.haml",
-     "views/missing.haml"
+     "views/missing.haml",
+     "views/page_list.haml"
   ]
   s.homepage = %q{http://github.com/samsm/grat}
   s.rdoc_options = ["--charset=UTF-8"]

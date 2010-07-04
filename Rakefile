@@ -13,7 +13,8 @@ begin
     gem.add_development_dependency "yard", ">= 0"
     gem.add_runtime_dependency 'sinatra'
     gem.add_runtime_dependency 'haml'
-    gem.add_runtime_dependency 'mongo_mapper', "0.6.10"
+    gem.add_runtime_dependency 'mongo_mapper', "0.8.0"
+
     gem.add_runtime_dependency 'json'
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end

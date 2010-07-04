@@ -33,6 +33,7 @@ module Grat
     end
 
     require Grat.lib_path + '/grat/content'
+    require Grat.lib_path + '/grat/hwia_patch'
 
   end
 

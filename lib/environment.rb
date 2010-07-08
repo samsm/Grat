@@ -1,5 +1,7 @@
 require 'sinatra'
 require 'json'
+require 'json/add/core'
+
 
 module Grat
   @@connection = nil

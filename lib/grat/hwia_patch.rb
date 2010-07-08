@@ -3,3 +3,9 @@ class ActiveSupport::HashWithIndifferentAccess
     to_hash.to_json(*args, &block)
   end
 end
+
+class Grat::Content
+  def to_json(state, depth)
+    super()
+  end
+end
